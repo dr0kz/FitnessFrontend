@@ -3,20 +3,6 @@
   background-color:white;
 }
 
-/*NEWS FEED RESPONSIVE*/
-@media only screen and (max-width: 1100px) {
-  .container-news-feed{
-    width:80%;
-  }
-}
-@media only screen and (max-width: 991px) {
-  .container-news-feed{
-    width:100%;
-  }
-  .side-section{
-    display: none;
-  }
-}
 /*SIDE SECTION RESPONSIVE*/
 @media only screen and (min-width: 1100px) {
   .fixed-content-side-section{
