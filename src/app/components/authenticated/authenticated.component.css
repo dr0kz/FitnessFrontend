@@ -2,10 +2,8 @@
 .header{
   background-color:white;
 }
-.container-news-feed{
-  width:60%;
-  margin:auto;
-}
+
+/*NEWS FEED RESPONSIVE*/
 @media only screen and (max-width: 1100px) {
   .container-news-feed{
     width:80%;
@@ -19,15 +17,14 @@
     display: none;
   }
 }
-
-
+/*SIDE SECTION RESPONSIVE*/
 @media only screen and (min-width: 1100px) {
   .fixed-content-side-section{
-    width:19%;
+    width:20%;
   }
 }
 @media only screen and (max-width: 1099px) {
   .fixed-content-side-section{
-    width:25%;
+    width:20%;
   }
 }
