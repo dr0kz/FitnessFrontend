@@ -1,15 +1,21 @@
-
-<div class="container">
-  <app-header></app-header>
+<div class="header sticky-top">
+  <div class="container">
+    <app-header></app-header>
+  </div>
+</div>
+<div class="container-news-feed">
   <div class="row mt-3">
-    <div class="col-8">
+    <div class="col-md-12 col-lg-8 mx-auto" >
       <router-outlet></router-outlet>
     </div>
-    <div class="col-4">
-      <app-side-section></app-side-section>
+    <div class="col-md-12 col-lg-4 side-section bg-white">
+      <div class="d-flex justify-content-center">
+        <div class="position-fixed fixed-content-side-section">
+          <app-side-section></app-side-section>
+        </div>
+      </div>
     </div>
   </div>
-
 </div>
 
 

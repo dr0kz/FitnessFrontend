@@ -11,6 +11,9 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component'
 import { AuthenticatedComponent } from './components/authenticated/authenticated.component';
 import { SideSectionComponent } from './components/side-section/side-section.component';
 import { PostComponent } from './components/post/post.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatIconModule} from "@angular/material/icon";
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,10 @@ import { PostComponent } from './components/post/post.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
