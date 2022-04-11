@@ -14,6 +14,7 @@ import { PostComponent } from './components/post/post.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatIconModule} from "@angular/material/icon";
+import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import {MatIconModule} from "@angular/material/icon";
     AuthenticatedComponent,
     SideSectionComponent,
     PostComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

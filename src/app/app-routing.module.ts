@@ -4,13 +4,15 @@ import { AuthenticatedComponent } from './components/authenticated/authenticated
 import { LoginComponent } from './components/login/login.component';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { RegisterComponent } from './components/register/register.component';
+import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 
 const routes: Routes = [
-  { 
+  {
     path: '',
-    component: AuthenticatedComponent, 
+    component: AuthenticatedComponent,
     children: [
       { path: '', component: NewsFeedComponent },
+      { path: 'edit-profile', component: EditProfileComponent },
     ]
   },
   { path: 'login', component: LoginComponent },
