@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatIconModule} from "@angular/material/icon";
 import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
+import { CreateWorkoutProgramComponent } from './components/create-workout-program/create-workout-program.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import {EditProfileComponent} from "./components/edit-profile/edit-profile.compo
     AuthenticatedComponent,
     SideSectionComponent,
     PostComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    CreateWorkoutProgramComponent
   ],
   imports: [
     BrowserModule,
