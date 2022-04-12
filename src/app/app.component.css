@@ -1,5 +1,5 @@
 .main-container {
-  width: 950px;
+  width: 920px;
   margin: auto;
 }
 h1, h2, h3, h4, h5, h6{
@@ -19,6 +19,10 @@ a:hover{
     width:100%;
   }
 }
+@media only screen and (min-width: 991px) {
+
+}
+
 @media only screen and (max-width: 991px) {
   .main-container{
     max-width:600px;
@@ -46,4 +50,15 @@ a:hover{
   max-width:190px;
   max-height:190px;
 }
+
+.login-image{
+  margin-right:10px;
+}
+.login-section{
+  margin-left:10px;
+}
+.login{
+  margin-top:3em;
+}
+
 
