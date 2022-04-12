@@ -1,4 +1,11 @@
 .search-input{
-  height:33px;
+  height:28px;
   border-radius: 10px;
+}
+.home-icon{
+  transform: scale(1.44);
+}
+.home-icon{
+  color:black;
+  fill:black !important;
 }

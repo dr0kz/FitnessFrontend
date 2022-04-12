@@ -1,16 +1,21 @@
 <div class="row">
-  <div class="col-sm-8">
-    <div class="d-flex justify-content-between">
-      <h3>Fitness App Logo</h3>
-      <div class="d-flex align-items-center ">
-        <mat-icon>search</mat-icon>
-        <input placeholder="Search" class="search-input border-0" type="text"/>
-      </div>
-    </div>
+  <div class="col col-xs-8 d-flex align-items-center">
+      <span>10059 najjachi</span>
   </div>
-  <div class="col-sm-4 d-flex align-items-center justify-content-end">
-    <mat-icon style="transform: scale(1.4);" class="mr-3">home</mat-icon>
-    <img src="/assets/images/face.jpg" class="ms-3 rounded-circle" width="30" height="30"/>
+  <div class="col col-xs-4 d-flex align-items-center justify-content-end">
+    <mat-icon>search</mat-icon>
+    <input placeholder="Search" class="me-3 search-input border-light" type="text"/>
+    <a routerLink="/"><mat-icon class="home-icon mr-3">home</mat-icon></a>
+    <div class="dropdown">
+      <img src="/assets/images/face.jpg" class="dropdown-toggle ms-3 rounded-circle" data-bs-toggle="dropdown"
+           aria-expanded="false" width="30" height="30" />
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li class="dropdown-item-mobile pa"><a class="dropdown-item" href="#">My Instructors</a></li>
+        <li class="dropdown-item-mobile pa"><a class="dropdown-item" href="#">My Programs</a></li>
+        <li><a class="dropdown-item" href="#">Log out</a></li>
+      </ul>
+    </div>
   </div>
 </div>
 
