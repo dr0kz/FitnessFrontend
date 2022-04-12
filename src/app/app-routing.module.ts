@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: '', component: NewsFeedComponent },
       { path: 'edit-profile', component: EditProfileComponent },
       { path: 'workout-programs/create', component: CreateWorkoutProgramComponent},
-      { path: 'profile/posts', component: ProfilePostsComponent},
+      { path: 'profile/posts', component: ProfilePostsComponent}
     ]
   },
   { path: 'login', component: LoginComponent },

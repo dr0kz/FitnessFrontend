@@ -1,0 +1,30 @@
+.holders{
+  font-size: 14px;
+}
+.div-holders{
+  margin-top:20px;
+  margin-bottom:20px;
+}
+.rounded-circle {
+  margin-left: 10px;
+}
+.mat-icon{
+  width: 40px;
+}
+#add-photo-button {
+  height: 30px;
+  border-radius: 5px;
+  background-color: 	#82d8d5;
+}
+#post-button {
+  height: 30px;
+  width: 56px;
+  border-radius: 5px;
+  background-color: 	#82d8d5;
+}
+#add-photo-button:hover{
+  background-color: #009da5;
+}
+#post-button:hover{
+  background-color: #009da5;
+}

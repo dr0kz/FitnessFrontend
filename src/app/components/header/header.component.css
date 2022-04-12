@@ -9,3 +9,7 @@
   color:black;
   fill:black !important;
 }
+.dropdown-item li a:hover {
+  background-color: gray;
+  color: darkgray;
+}
