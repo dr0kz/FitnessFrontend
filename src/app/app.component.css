@@ -2,6 +2,12 @@
   width: 950px;
   margin: auto;
 }
+h1, h2, h3, h4, h5, h6{
+  margin:0;
+}
+.divider{
+  border-top:3px solid #000000;
+}
 @media only screen and (max-width: 600px) {
   .main-container{
     width:100%;
@@ -22,3 +28,11 @@
   display: none;
 }
 
+.save-button{
+  min-width: 130px !important;
+  max-width: 150px !important;
+}
+.add-button{
+  min-width: 130px !important;
+  max-width: 150px !important;
+}
