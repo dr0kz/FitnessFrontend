@@ -19,6 +19,8 @@ import { CreateWorkoutProgramComponent } from './components/create-workout-progr
 import {FormsModule} from "@angular/forms";
 import { ProfilePostsComponent } from './components/profile-posts/profile-posts.component';
 import {CreatePostComponent} from "./components/create-post/create-post.component";
+import { ProfileWorkoutProgramsComponent } from './components/profile-workout-programs/profile-workout-programs.component';
+import { WorkoutProgramComponent } from './components/workout-program/workout-program.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import {CreatePostComponent} from "./components/create-post/create-post.componen
     EditProfileComponent,
     CreateWorkoutProgramComponent,
     ProfilePostsComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    ProfileWorkoutProgramsComponent,
+    WorkoutProgramComponent
   ],
   imports: [
     BrowserModule,
