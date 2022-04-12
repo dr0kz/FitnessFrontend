@@ -6,6 +6,7 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { RegisterComponent } from './components/register/register.component';
 import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 import {CreateWorkoutProgramComponent} from "./components/create-workout-program/create-workout-program.component";
+import {ProfilePostsComponent} from "./components/profile-posts/profile-posts.component";
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [
       { path: '', component: NewsFeedComponent },
       { path: 'edit-profile', component: EditProfileComponent },
-      { path: 'workout-programs/create', component: CreateWorkoutProgramComponent}
+      { path: 'workout-programs/create', component: CreateWorkoutProgramComponent},
+      { path: 'profile/posts', component: ProfilePostsComponent},
     ]
   },
   { path: 'login', component: LoginComponent },

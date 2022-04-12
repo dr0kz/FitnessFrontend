@@ -17,6 +17,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 import { CreateWorkoutProgramComponent } from './components/create-workout-program/create-workout-program.component';
 import {FormsModule} from "@angular/forms";
+import { ProfilePostsComponent } from './components/profile-posts/profile-posts.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import {FormsModule} from "@angular/forms";
     SideSectionComponent,
     PostComponent,
     EditProfileComponent,
-    CreateWorkoutProgramComponent
+    CreateWorkoutProgramComponent,
+    ProfilePostsComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,12 @@ h1, h2, h3, h4, h5, h6{
 .divider{
   border-top:3px solid #000000;
 }
+a{
+  color:black;
+}
+a:hover{
+  color: rgba(51, 51, 51, 0.48);
+}
 @media only screen and (max-width: 600px) {
   .main-container{
     width:100%;
@@ -36,3 +42,8 @@ h1, h2, h3, h4, h5, h6{
   min-width: 130px !important;
   max-width: 150px !important;
 }
+.post-image{
+  max-width:190px;
+  max-height:190px;
+}
+
