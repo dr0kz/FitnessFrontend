@@ -8,6 +8,7 @@ import {EditProfileComponent} from "./components/edit-profile/edit-profile.compo
 import {CreateWorkoutProgramComponent} from "./components/create-workout-program/create-workout-program.component";
 import {ProfilePostsComponent} from "./components/profile-posts/profile-posts.component";
 import {ProfileWorkoutProgramsComponent} from "./components/profile-workout-programs/profile-workout-programs.component";
+import {EditWorkoutProgramComponent} from "./components/edit-workout-program/edit-workout-program.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: '', component: NewsFeedComponent },
       { path: 'edit-profile', component: EditProfileComponent },
       { path: 'workout-programs/create', component: CreateWorkoutProgramComponent},
+      { path: 'workout-programs/edit', component: EditWorkoutProgramComponent},
       { path: 'profile/posts', component: ProfilePostsComponent},
       { path: 'profile/workout-programs', component: ProfileWorkoutProgramsComponent}
     ]
