@@ -1,6 +1,17 @@
 .main-container {
   width: 920px;
   margin: auto;
+  padding:0;
+}
+.post-image{
+  max-width:600px;
+  max-height:600px;
+}
+.row{
+  margin:0;
+}
+.col-md-2{
+  padding:0;
 }
 h1, h2, h3, h4, h5, h6{
   margin:0;
@@ -18,8 +29,6 @@ a:hover{
   .main-container{
     width:100%;
   }
-}
-@media only screen and (min-width: 991px) {
 
 }
 
@@ -29,6 +38,9 @@ a:hover{
   }
   .side-section{
     display: none;
+  }
+  .main-section{
+    padding-right:0 !important;
   }
   .dropdown-item-mobile{
     display: flex !important;

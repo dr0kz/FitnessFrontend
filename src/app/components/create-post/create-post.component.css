@@ -28,3 +28,13 @@
 #post-button:hover{
   background-color: #009da5;
 }
+
+
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
