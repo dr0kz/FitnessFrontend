@@ -13,12 +13,12 @@ import { SideSectionComponent } from './components/side-section/side-section.com
 import { PostComponent } from './components/post/post.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatIconModule} from "@angular/material/icon";
-import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
+import { MatIconModule } from "@angular/material/icon";
+import { EditProfileComponent } from "./components/edit-profile/edit-profile.component";
 import { CreateWorkoutProgramComponent } from './components/create-workout-program/create-workout-program.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { ProfilePostsComponent } from './components/profile-posts/profile-posts.component';
-import {CreatePostComponent} from "./components/create-post/create-post.component";
+import { CreatePostComponent } from "./components/create-post/create-post.component";
 import { ProfileWorkoutProgramsComponent } from './components/profile-workout-programs/profile-workout-programs.component';
 import { WorkoutProgramComponent } from './components/workout-program/workout-program.component';
 import { EditWorkoutProgramComponent } from './components/edit-workout-program/edit-workout-program.component';
