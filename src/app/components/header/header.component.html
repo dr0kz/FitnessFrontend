@@ -12,8 +12,7 @@
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <li><a class="dropdown-item" routerLink="/profile/posts">My Profile</a></li>
         <li><a class="dropdown-item" routerLink="/edit-profile">Edit Profile</a></li>
-<!--        <li class="dropdown-item-mobile dropdown-item-info" routerLink="/profile/programs"><a class="dropdown-item" href="#">My Programs</a></li>-->
-        <li><a class="dropdown-item" href="#">Log out</a></li>
+        <li><button class="dropdown-item" (click)="onLogOut()" >Log out</button></li>
       </ul>
     </div>
   </div>

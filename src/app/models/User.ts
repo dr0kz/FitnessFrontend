@@ -8,5 +8,6 @@ export interface User {
   password: string,
   image: string,
   description: string,
-  role: Role
+  role: string,
+  token: string,
 }

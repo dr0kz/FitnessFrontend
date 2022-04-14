@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {User} from "../model/User";
+import {User} from "../models/User";
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -9,7 +9,7 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
 
-  logOut(): void {
+  signOut(): void {
     window.sessionStorage.clear();
   }
 
@@ -32,7 +32,6 @@ export class TokenStorageService {
     if (user) {
       return JSON.parse(user);
     }
-
     return null;
   }
 

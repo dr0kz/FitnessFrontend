@@ -9,11 +9,13 @@ import {CreateWorkoutProgramComponent} from "./components/create-workout-program
 import {ProfilePostsComponent} from "./components/profile-posts/profile-posts.component";
 import {ProfileWorkoutProgramsComponent} from "./components/profile-workout-programs/profile-workout-programs.component";
 import {EditWorkoutProgramComponent} from "./components/edit-workout-program/edit-workout-program.component";
+import {AuthGuard} from "./helpers/authguard";
 
 const routes: Routes = [
   {
     path: '',
     component: AuthenticatedComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: NewsFeedComponent },
       { path: 'edit-profile', component: EditProfileComponent },
