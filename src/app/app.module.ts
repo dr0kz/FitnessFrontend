@@ -22,6 +22,9 @@ import {CreatePostComponent} from "./components/create-post/create-post.componen
 import { ProfileWorkoutProgramsComponent } from './components/profile-workout-programs/profile-workout-programs.component';
 import { WorkoutProgramComponent } from './components/workout-program/workout-program.component';
 import { EditWorkoutProgramComponent } from './components/edit-workout-program/edit-workout-program.component';
+
+import {authInterceptorProviders} from './helpers/auth_interceptor'
+
 @NgModule({
   declarations: [
     AppComponent,
