@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
         next: user => {
           this.tokenService.saveToken(user.token)
           this.tokenService.saveUser(user)
-          console.log(user)
           this.router.navigate(['/'])
         },
         error: () => {

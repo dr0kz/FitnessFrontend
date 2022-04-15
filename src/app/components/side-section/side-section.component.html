@@ -3,7 +3,7 @@
   <div class="mt-2">
     &#11088;&#11088;&#11088;
   </div>
-  <h3 class="mb-0">Angela Petkova</h3>
+  <h3 *ngIf="user!=undefined" class="mb-0">{{user.name+' '+user.surname}}</h3>
   <p class="mb-0">1200 followers</p>
   <button class="mt-2 follow-btn btn btn-info">Follow</button>
   <span class="border-top mt-3 w-100"></span>

@@ -18,11 +18,10 @@ export class PostService {
       return this.http.get<Post[]>(`/api/posts/${userId}`);
   }
 
-  createPost(description: string, image: string, userId: number): Observable<Post> {
-      return this.http.post<Post>('/api/posts', {
+  createPost(description: string, image: string): Observable<Post> {
+      return this.http.post<Post>('/api/posts/create', {
         description: description,
         image: image,
-        userId: userId
       });
   }
 

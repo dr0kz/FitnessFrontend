@@ -1,23 +1,14 @@
-<div class="row">
-  <div class="col col-md-1">
-    <div class="d-flex align-items-center justify-content-center">
-      <img class="rounded-circle" width="30" height="30" src="/assets/images/face.jpg" />
-    </div>
+<div class="d-flex align-items-center">
+  <img class="rounded-circle" width="30" height="30" src="/assets/images/face.jpg" />
+  <form class="d-flex w-100" [formGroup]="createPostForm" (ngSubmit)="onSubmit()">
+  <input formControlName="description" class=" ms-2 form form-control holders me-2" type="textarea" placeholder="What muscles are you pumping today?" />
+  <div class="d-flex flex-column align-items-center">
+    <label class="mb-2 btn btn-warning">
+      <input formControlName="image" type="file"/>
+      <mat-icon>add_photo_alternate</mat-icon>
+    </label>
+    <button class="w-100 btn btn-info" >Post</button>
   </div>
-  <div class="col col-md-9">
-    <div>
-      <textarea class="form form-control holders" type="textarea" placeholder="What muscles are you pumping today?"></textarea>
-    </div>
-  </div>
-  <div class="col col-md-2">
-    <div class="position-relative">
-      <label class="custom-file-upload">
-        <input type="file"/>
-        <mat-icon class="">add_photo_alternate</mat-icon>
-      </label>
-    </div>
-    <div>
-      <button class="" >Post</button>
-    </div>
-  </div>
+  </form>
 </div>
+

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from "../../models/User";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-side-section',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideSectionComponent implements OnInit {
 
-  constructor() { }
+  user: User | undefined
+  constructor(private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.user = this.tokenService.getUser()
   }
 
 }

@@ -22,8 +22,8 @@ import { CreatePostComponent } from "./components/create-post/create-post.compon
 import { ProfileWorkoutProgramsComponent } from './components/profile-workout-programs/profile-workout-programs.component';
 import { WorkoutProgramComponent } from './components/workout-program/workout-program.component';
 import { EditWorkoutProgramComponent } from './components/edit-workout-program/edit-workout-program.component';
-import {HttpClientModule} from "@angular/common/http";
-import {authInterceptorProviders} from './helpers/auth_interceptor'
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor, authInterceptorProviders} from './helpers/auth_interceptor'
 
 @NgModule({
   declarations: [
@@ -54,7 +54,9 @@ import {authInterceptorProviders} from './helpers/auth_interceptor'
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

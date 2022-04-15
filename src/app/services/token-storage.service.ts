@@ -27,12 +27,12 @@ export class TokenStorageService {
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  getUser(): User | null {
+  getUser(): User | undefined {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
       return JSON.parse(user);
     }
-    return null;
+    return undefined;
   }
 
   getRole(): String | null {
