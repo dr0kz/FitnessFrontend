@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 export class CreatePostComponent implements OnInit{
 
   createPostForm!: FormGroup
-
   constructor(private postService: PostService,
               private router: Router,
               private formBuilder: FormBuilder) {
@@ -22,14 +21,23 @@ export class CreatePostComponent implements OnInit{
       image: '',
     });
   }
+  onFileChange(event: Event){
+    const element = event.currentTarget as HTMLInputElement;
+    let fileList: FileList | null = element.files;
+    if(fileList!=null && fileList.length > 0){
+      const file =fileList[0];
+      this.createPostForm.get('image')!!.setValue(file);
+    }
+  }
   onSubmit(): void {
     if (this.createPostForm.invalid) {
       return;
     }
-    let description = this.createPostForm.controls['description'].value;
-    let image = this.createPostForm.controls['image'].value;
+    let formData = new FormData();
+    formData.append("image", this.createPostForm.get('image')!!.value)
+    formData.append("description", this.createPostForm.controls['description'].value)
 
-    this.postService.createPost(description, image)
+    this.postService.createPost(formData)
       .subscribe({
         next: post => {
           this.router.navigate(['/'])
