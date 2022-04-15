@@ -2,27 +2,27 @@
 
   <div class="d-flex align-items-center justify-content-between mt-2  p-2 ">
     <div class="d-flex align-items-center">
-      <img class="rounded-circle" width="30" height="30" src="/assets/images/face.jpg" />
-      <span class="ms-2">Angela Petkova</span>
+      <img class="rounded-circle" width="30" height="30" src="/assets/images/face.jpg"/>
+      <span class="ms-2">{{post?.user?.name + ' ' + post?.user?.surname}}</span>
     </div>
-    <div>
+    <div *ngIf="post?.user?.role?.toString()=='TRAINER'">
       &#11088;&#11088;Fitness Instructor
     </div>
   </div>
   <hr class="mb-2 mt-2">
-  <img class="rounded-3 mt-2 post-image" src="/assets/images/face.jpg" />
+  <img class="rounded-3 mt-2 post-image" [src]="post?.image"/>
   <div class="d-flex p-2 mt-2 flex-column justify-content-between">
     <div class="d-flex justify-content-between">
       <div class="d-flex">
         <mat-icon>favorite</mat-icon>
-        <p>122</p>
+        <p>{{post?.muscles}}</p>
       </div>
       <div>
-        <p>30 minutes ago</p>
+        <p>{{post?.createdBefore}}</p>
       </div>
     </div>
     <div>
-      <p>ewgewgge e gewgge e gegeg egewgewgge e gegeg egewgewgge e gegeg egewgewgge e gegeg egewgewgge e gegeg egewgewgge e gegeg egewgegeg egew ge gegegegg</p>
+      <p>{{post?.description}}</p>
     </div>
   </div>
 

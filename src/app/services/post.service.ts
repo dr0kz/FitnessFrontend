@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Post} from "../models/Post";
+import {Response} from "../models/Response";
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,16 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getPostsPaginate(page: number, size: number):  Observable<Post[]> {
-      return this.http.get<Post[]>(`/api/posts?page=${page}&size=${size}`);
+      return this.http.get<Post[]>(`/api/posts?page=${page}&pageSize=${size}`);
   }
 
   getPostsByUser(userId: number): Observable<Post[]> {
       return this.http.get<Post[]>(`/api/posts/${userId}`);
   }
 
-  createPost(description: string, image: string): Observable<Post> {
-      return this.http.post<Post>('/api/posts/create', {
-        description: description,
-        image: image,
-      });
+  createPost(formData: FormData): Observable<Response<any>> {
+    console.log(formData.get("image"))
+      return this.http.post<Response<any>>('/api/posts/add', formData);
   }
 
   deletePost(postId: number) {
