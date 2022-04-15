@@ -1,19 +1,22 @@
 <div class="d-flex flex-column justify-content-center align-items-center login">
-    <div class="login-section d-flex flex-column">
-        <div class="bg-white p-5 border-light">
-            <h1 class="text-center ">Fitness</h1>
-            <div class="mt-5" >
-              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <input class="form form-control" formControlName="email" type="text" placeholder="Email" />
-                <input class="mt-3 form form-control" formControlName="password" type="password" placeholder="Password" />
-                <div class="d-flex justify-content-center">
-                  <button class="w-100 mt-4 btn btn-primary">Log in</button>
-                </div>
-              </form>
-            </div>
-        </div>
-        <div class="bg-white text-center mt-2 p-3 border-light">
-            <p>Don't have an account? <a routerLink="/register">Sign up</a></p>
-        </div>
+  <div class="mb-4 ms-2">
+      <img src="/assets/images/muscled.png" class="img-fluid">
+  </div>
+  <div class="login-section d-flex flex-column">
+    <div class="bg-secondary p-4 border-light rounded-3">
+      <h1 class="text-center text-white display-3">Fitness Stovix</h1>
+      <div class="mt-3" >
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <input class="form form-control" formControlName="email" type="text" placeholder="Email" />
+          <input class="mt-3 form form-control" formControlName="password" type="password" placeholder="Password" />
+          <div class="d-flex justify-content-center">
+            <button class="w-100 mt-4 btn btn-outline-light">Log in</button>
+          </div>
+        </form>
+      </div>
     </div>
+    <div class="bg-secondary text-center mt-2 pt-3 border-light rounded-3">
+      <p class="text-white">Don't have an account? <a routerLink="/register" >Sign up</a></p>
+    </div>
+  </div>
 </div>

@@ -3,9 +3,9 @@
   <form class="d-flex w-100" [formGroup]="createPostForm" (ngSubmit)="onSubmit()">
   <input formControlName="description" class=" ms-2 form form-control holders me-2" type="textarea" placeholder="What muscles are you pumping today?" />
   <div class="d-flex flex-column align-items-center">
-    <label class="mb-2 btn btn-warning">
+    <label class="mb-2 btn btn-secondary">
       <input formControlName="image" type="file"/>
-      <mat-icon>add_photo_alternate</mat-icon>
+      <mat-icon class="text-black">add_photo_alternate</mat-icon>
     </label>
     <button class="w-100 btn btn-info" >Post</button>
   </div>
