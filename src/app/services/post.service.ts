@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Post} from "../models/Post";
@@ -9,23 +9,24 @@ import {Response} from "../models/Response";
 })
 export class PostService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getPostsPaginate(page: number, size: number):  Observable<Post[]> {
-      return this.http.get<Post[]>(`/api/posts?page=${page}&pageSize=${size}`);
+  getPostsPaginate(page: number, size: number, firstGetRequestDateTime: String): Observable<Post[]> {
+    return this.http.get<Post[]>(`/api/posts?page=${page}&pageSize=${size}&firstGetRequestDateTime=${firstGetRequestDateTime}`);
   }
 
   getPostsByUser(userId: number): Observable<Post[]> {
-      return this.http.get<Post[]>(`/api/posts/${userId}`);
+    return this.http.get<Post[]>(`/api/posts/${userId}`);
   }
 
   createPost(formData: FormData): Observable<Response<any>> {
     console.log(formData.get("image"))
-      return this.http.post<Response<any>>('/api/posts/add', formData);
+    return this.http.post<Response<any>>('/api/posts/add', formData);
   }
 
   deletePost(postId: number) {
-      return this.http.delete(`/api/posts/${postId}`)
+    return this.http.delete(`/api/posts/${postId}`)
   }
 
   //update na post kako sto zborevme nema da ima tuku samo delete ke imame? ako ima togas ke se napravi plus view na frontend da se stavi

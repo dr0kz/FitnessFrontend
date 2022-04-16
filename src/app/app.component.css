@@ -5,7 +5,7 @@
 }
 .post-image{
   max-width:600px;
-  max-height:600px;
+  max-height:900px;
 }
 .row{
   margin:0;
@@ -29,7 +29,6 @@ a:hover{
   .main-container{
     width:100%;
   }
-
 }
 
 @media only screen and (max-width: 991px) {
@@ -58,10 +57,7 @@ a:hover{
   min-width: 130px !important;
   max-width: 150px !important;
 }
-.post-image{
-  max-width:190px;
-  max-height:190px;
-}
+
 
 .login-image{
   margin-right:10px;
@@ -72,7 +68,7 @@ a:hover{
 .login{
   margin-top:3em;
 }
-/*body {*/
-/*  background-image: url('https://www.freepik.com/free-photo/abstract-luxury-blur-dark-grey-black-gradient-used-as-background-studio-wall-display-your-pr_18192039.htm') !important;*/
-/*}*/
-/*<img src="/assets/images/profile-icon.png" width="130" height="130"  alt="profile picture"/>*/
+.profile-image{
+  width:30px;
+  height:30px;
+}

@@ -23,8 +23,9 @@ import { ProfileWorkoutProgramsComponent } from './components/profile-workout-pr
 import { WorkoutProgramComponent } from './components/workout-program/workout-program.component';
 import { EditWorkoutProgramComponent } from './components/edit-workout-program/edit-workout-program.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {AuthInterceptor, authInterceptorProviders} from './helpers/auth_interceptor'
-
+import {AuthInterceptor} from './helpers/auth_interceptor'
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,18 +44,19 @@ import {AuthInterceptor, authInterceptorProviders} from './helpers/auth_intercep
     WorkoutProgramComponent,
     EditWorkoutProgramComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MDBBootstrapModule.forRoot(),
-    BrowserAnimationsModule,
-    MatSliderModule,
-    MatIconModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-  ],
-  providers: [
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MDBBootstrapModule.forRoot(),
+        BrowserAnimationsModule,
+        MatSliderModule,
+        MatIconModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        InfiniteScrollModule,
+    ],
+  providers: [DatePipe,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]

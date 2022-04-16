@@ -1,9 +1,9 @@
-import {Component, HostListener, OnInit, Renderer2} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from "../../models/Post";
 import {PostService} from "../../services/post.service";
 import {DomSanitizer} from "@angular/platform-browser";
-import {fromEvent, map, mergeMap, of, Subject, takeUntil} from "rxjs";
-import {Event} from "@angular/router";
+import {map} from "rxjs";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-news-feed',
@@ -12,16 +12,17 @@ import {Event} from "@angular/router";
 })
 export class NewsFeedComponent implements OnInit {
 
-  posts: Post[] | null = null
+  posts: Post[] | undefined;
+  currentPage = 0;
+  pageSize = 4;
+  throttle = 1000;
+  firstGetRequestDateTime: String | null = null;
 
   constructor(private postService: PostService,
-              private sanitizer: DomSanitizer,) {
+              private sanitizer: DomSanitizer,
+              private datePipe: DatePipe,) {
+  }
 
-  }
-  @HostListener('window:scroll', ['$event']) // for window scroll events
-  onScroll(event: EventListener) {
-  console.log(event)
-  }
   formatAndCalculateDifferenceBetweenTwoDates(date1: Date, date2: Date): string {
     let differenceInSeconds = (date1.getTime() - date2.getTime()) / 1000;
     if (differenceInSeconds >= 60) {
@@ -39,8 +40,11 @@ export class NewsFeedComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    this.postService.getPostsPaginate(0, 10)
+  fetchPosts(page: number, pageSize: number): void {
+    if(this.firstGetRequestDateTime===null){
+      this.firstGetRequestDateTime = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
+    }
+    this.postService.getPostsPaginate(page, pageSize, this.firstGetRequestDateTime!!)
       .pipe(
         map((data) =>
           data.map(t => {
@@ -59,12 +63,25 @@ export class NewsFeedComponent implements OnInit {
         ))
       .subscribe({
         next: data => {
-          this.posts = data
+          if(this.posts===undefined){
+            this.posts = data
+          }else{
+            this.posts = [...this.posts,...data]
+          }
         },
         error: () => {
           console.log("epicentar")
         }
       })
   }
+
+  ngOnInit(): void {
+    this.fetchPosts(0, this.pageSize);
+  }
+
+  onScrollDown() {
+    this.fetchPosts(++this.currentPage, this.pageSize);
+  }
+
 
 }
