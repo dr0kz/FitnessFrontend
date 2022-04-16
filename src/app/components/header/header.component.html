@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="col col-xs-8 d-flex align-items-center">
+  <div class="col col-xs-8 d-flex align-items-center ps-0 ">
       <h2>Fitness Stovix</h2>
   </div>
-  <div class="col col-xs-4 d-flex align-items-center justify-content-end">
+  <div class="col col-xs-4 d-flex align-items-center justify-content-end pe-0">
     <mat-icon>search</mat-icon>
     <input placeholder="Search" class="me-3 search-input border-light" type="text"/>
-    <a routerLink="/"><mat-icon class="home-icon mr-3">home</mat-icon></a>
-    <div class="dropdown">
-      <img src="/assets/images/face.jpg" class="dropdown-toggle ms-3 rounded-circle" data-bs-toggle="dropdown"
-           aria-expanded="false" width="30" height="30" />
+    <a routerLink="/"><mat-icon class="home-icon me-3">home</mat-icon></a>
+    <div class="dropdown profile-image">
+      <img alt="Profile image" src="/assets/images/face.jpg" class="dropdown-toggle rounded-circle img-fluid" data-bs-toggle="dropdown"
+           aria-expanded="false"/>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <li><a class="dropdown-item" routerLink="/profile/posts">My Profile</a></li>
         <li><a class="dropdown-item" routerLink="/edit-profile">Edit Profile</a></li>
