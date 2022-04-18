@@ -5,4 +5,10 @@
   margin-top:20px;
   margin-bottom:20px;
 }
-
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  cursor: pointer;
+}

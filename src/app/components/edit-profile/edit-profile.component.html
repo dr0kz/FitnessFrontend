@@ -1,61 +1,62 @@
-<div class="d-flex justify-content-center align-items-center row">
-  <div class="d-flex flex-column col-12">
+<div class="d-flex justify-content-center align-items-center row ">
+  <div class="d-flex flex-column col-12 border rounded bg-white mb-2">
     <div class="bg-white p-5">
       <h1 class="text-center ">Edit Profile</h1>
-      <div class="mt-5">
-        <div class="div-holders mt-2 ">
-          <span class="holders">Name</span>
-          <input class="form form-control" type="text" placeholder="Name" />
-        </div>
-        <div class="div-holders mt-2">
-          <span class="holders">Surname</span>
-          <input class="form form-control" type="text" placeholder="Surname" />
-        </div>
-        <div class="div-holders mt-2 ">
-          <span class="holders">Email</span>
-          <input class="form form-control" type="text" placeholder="Email" />
-        </div>
-        <div class="div-holders mt-2 ">
-          <span class="holders">Username</span>
-          <input class="form form-control" type="text" placeholder="Username" />
-        </div>
-        <div class="div-holders mt-2 ">
-          <span class="holders">Password</span>
-          <input class="form form-control" type="password" placeholder="Password" />
-        </div>
-        <div class="div-holders mt-2 ">
-          <span class="holders">Confirm Password</span>
-          <input class="form form-control" type="password" placeholder="Confirm Password" />
-        </div>
-        <div class="div-holders mt-2 ">
-          <span class="holders">Description</span>
-          <textarea class="form form-control" type="textarea" placeholder="Description"></textarea>
-        </div>
-        <div class="bottom row mt-5">
-          <div class="image col-md-6 col-sm-12">
-            <div class="image-holder">
-              <div>
-                <span class="d-flex justify-content-center align-items-center holders">Profile image</span>
-              </div>
-              <div class="d-flex justify-content-center align-items-center mt-2">
-                <img src="/assets/images/profile-icon.png" width="130" height="130"  alt="profile picture"/>
+      <form [formGroup]="editProfile" (ngSubmit)="onSubmit()">
+        <div class="mt-5">
+          <div class="div-holders mt-2 ">
+            <span class="holders">Name</span>
+            <input formControlName="name" class="form form-control" type="text" placeholder="Name" />
+          </div>
+          <div class="div-holders mt-2">
+            <span class="holders">Surname</span>
+            <input formControlName="surname" class="form form-control" type="text" placeholder="Surname" />
+          </div>
+          <div class="div-holders mt-2 ">
+            <span class="holders">Email</span>
+            <input formControlName="email" class="form form-control" type="text" placeholder="Email" />
+          </div>
+          <div class="div-holders mt-2 ">
+            <span class="holders">Password</span>
+            <input formControlName="password" class="form form-control" type="password" placeholder="Password" />
+          </div>
+          <div class="div-holders mt-2 ">
+            <span class="holders">Confirm Password</span>
+            <input formControlName="confirmPassword" class="form form-control" type="password" placeholder="Confirm Password" />
+          </div>
+          <div class="div-holders mt-2 ">
+            <span class="holders">Description</span>
+            <input formControlName="description" class="form form-control" type="textarea" placeholder="Description">
+          </div>
+          <div class="bottom row mt-5">
+            <div class="image col-md-6 col-sm-12">
+              <div class="image-holder">
+                <div>
+                  <span class="d-flex justify-content-center align-items-center holders">Profile image</span>
+                </div>
+                <div class="d-flex justify-content-center align-items-center mt-2">
+                  <img src="/assets/images/profile-icon.png" width="130" height="130"  alt="profile picture"/>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="buttons-group row">
-          <div class=" col-md-6 col-sm-12">
-            <div class="d-flex justify-content-center inline-block">
-              <button class="w-50 mt-4 btn btn-secondary add-button">Add Image</button>
+          <div class="buttons-group row">
+            <div class=" col-md-6 col-sm-12">
+              <div class="d-flex justify-content-center inline-block">
+                <label class="btn btn-secondary mt-4">
+                  <input class="w-50" (change)="onFileChange($event)" type="file"/>
+                  Add Image
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="d-flex justify-content-center inline-block">
+                <button class="w-50 mt-4 btn btn-primary save-button">Save changes</button>
+              </div>
             </div>
           </div>
-          <div class="col-md-6 col-sm-12">
-            <div class="d-flex justify-content-center inline-block">
-              <button class="w-50 mt-4 btn btn-primary save-button">Save changes</button>
-            </div>
-          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
