@@ -1,5 +1,4 @@
-<div class="d-flex flex-column rounded-3 position-relative">
-
+<div class="d-flex flex-column rounded-3 position-relative bg-white mb-3 border">
   <div class="d-flex align-items-center justify-content-between mt-2  p-2 ">
     <div class="d-flex align-items-center">
       <div class="profile-image">
@@ -15,8 +14,9 @@
   <img alt="Post image" class="rounded-3 mt-2 post-image" [src]="post?.image"/>
   <div class="d-flex mt-2 flex-column justify-content-between">
     <div class="d-flex p-2 justify-content-between">
-      <div class="d-flex" >
-        <img class="like-icon" [ngClass]="post?.likedBy ? 'post-liked' : ''" (click)="likeOrDislikePost(post?.id!!)" src="/assets/images/top.png" width="25" height="25"/>
+      <div class="d-flex">
+        <img class="like-icon" [ngClass]="post?.likedBy ? 'post-liked' : ''" (click)="likeOrDislikePost(post?.id!!)"
+             src="/assets/images/top.png" width="25" height="25"/>
         <h4 class="ps-1">{{post?.muscles}}</h4>
       </div>
       <div>
@@ -26,10 +26,6 @@
     <div class="p-2">
       <p>{{post?.description}}</p>
     </div>
-  </div>
-
-  <div class="d-flex justify-content-end">
-    <button class="btn  btn-danger">Delete</button>
   </div>
 </div>
 

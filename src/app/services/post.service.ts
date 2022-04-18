@@ -3,21 +3,23 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Post} from "../models/Post";
 import {Response} from "../models/Response";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private sanitizer: DomSanitizer,) {
   }
 
   getPostsPaginate(page: number, size: number, firstGetRequestDateTime: String): Observable<Post[]> {
     return this.http.get<Post[]>(`/api/posts?page=${page}&pageSize=${size}&firstGetRequestDateTime=${firstGetRequestDateTime}`);
   }
 
-  getPostsByUser(userId: number): Observable<Post[]> {
-    return this.http.get<Post[]>(`/api/posts/${userId}`);
+  getPostsByUser(): Observable<Post[]> {
+    return this.http.get<Post[]>(`/api/posts/find-all-by-user`);
   }
 
   createPost(formData: FormData): Observable<Response<any>> {
@@ -29,16 +31,40 @@ export class PostService {
   }
 
   likeOrDislikePost(postId: number) {
-    return this.http.put(`/api/posts/likeOrDislike/${postId}`, {});
+    return this.http.put(`/api/users/muscle/${postId}`, {});
   }
 
-  //update na post kako sto zborevme nema da ima tuku samo delete ke imame? ako ima togas ke se napravi plus view na frontend da se stavi
+  formatAndCalculateDifferenceBetweenTwoDates(date1: Date, date2: Date): string {
+    let differenceInSeconds = (date1.getTime() - date2.getTime()) / 1000;
+    if (differenceInSeconds >= 60) {
+      let differenceInMinutes = differenceInSeconds / 60;
+      if (differenceInMinutes >= 60) {
+        let differenceInHours = differenceInMinutes / 60;
+        if (differenceInHours >= 24) {
+          return Math.floor(differenceInHours / 24) == 1 ? Math.floor(differenceInHours / 24) + ' day' : Math.floor(differenceInHours / 24) + ' days'
+        }
+        return Math.floor(differenceInHours) == 1 ? Math.floor(differenceInHours) + ' hour' : Math.floor(differenceInHours) + ' hours'
+      }
+      return Math.floor(differenceInMinutes) == 1 ? Math.floor(differenceInMinutes) + ' minute' : Math.floor(differenceInMinutes) + ' minutes'
+    }
+    return Math.floor(differenceInSeconds) == 1 ? Math.floor(differenceInSeconds) + ' second' : Math.floor(differenceInSeconds) + ' seconds'
+  }
 
-  //za like i dislike ima posebni 2 funkcie i 2 rute u kontroler
-  //ja vikam da napravimo edna ruta ss ednu funkciju i pri klik ke se prakja put request
-  //kd ke stigne put request ke se proveri dali u tabelata user_like_posts ima zapis so takvo user_id i takvo post_id
-  //ako ima zapis ke se vrati true i ke se napravi dislike i broj na lajkovi na taa slika ke se namali +1
-
-  //taka ke zabranime eden ist user povekje pati da lajkne eden ist post
+  transformPost(posts: Post[]): Post[]{
+    return posts.map(t => {
+      let objectURL = 'data:image/png;base64,' + t.image;
+      let image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+      return {
+        id: t.id,
+        muscles: t.muscles,
+        dateCreated: t.dateCreated,
+        createdBefore: this.formatAndCalculateDifferenceBetweenTwoDates(new Date(), new Date(t.dateCreated)),
+        description: t.description,
+        image: image,
+        user: t.user,
+        likedBy: t.likedBy,
+      } as Post
+    })
+  }
 
 }

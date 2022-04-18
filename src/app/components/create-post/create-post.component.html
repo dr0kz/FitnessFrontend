@@ -1,7 +1,7 @@
-<div class="d-flex align-items-center">
-  <img class="rounded-circle" width="30" height="30" src="/assets/images/face.jpg" />
+<div class="d-flex align-items-center bg-white border p-2">
+  <img class="ms-0 rounded-circle" width="30" height="30" src="/assets/images/face.jpg" />
   <form class="d-flex w-100" [formGroup]="createPostForm" (ngSubmit)="onSubmit()">
-  <input formControlName="description" class=" ms-2 form form-control holders me-2" type="textarea" placeholder="What muscles are you pumping today?" />
+  <input formControlName="description" class="ms-2 form form-control holders me-2" type="textarea" placeholder="What muscles are you pumping today?" />
   <div class="d-flex flex-column align-items-center">
     <label class="mb-2 btn btn-secondary">
       <input (change)="onFileChange($event)" type="file"/>

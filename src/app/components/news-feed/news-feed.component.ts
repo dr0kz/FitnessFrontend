@@ -23,44 +23,13 @@ export class NewsFeedComponent implements OnInit {
               private datePipe: DatePipe,) {
   }
 
-  formatAndCalculateDifferenceBetweenTwoDates(date1: Date, date2: Date): string {
-    let differenceInSeconds = (date1.getTime() - date2.getTime()) / 1000;
-    if (differenceInSeconds >= 60) {
-      let differenceInMinutes = differenceInSeconds / 60;
-      if (differenceInMinutes >= 60) {
-        let differenceInHours = differenceInMinutes / 60;
-        if (differenceInHours >= 24) {
-          return Math.floor(differenceInHours / 24) == 1 ? Math.floor(differenceInHours / 24) + ' day' : Math.floor(differenceInHours / 24) + ' days'
-        }
-        return Math.floor(differenceInHours) == 1 ? Math.floor(differenceInHours) + ' hour' : Math.floor(differenceInHours) + ' hours'
-      }
-      return Math.floor(differenceInMinutes) == 1 ? Math.floor(differenceInMinutes) + ' minute' : Math.floor(differenceInMinutes) + ' minutes'
-    }
-    return Math.floor(differenceInSeconds) == 1 ? Math.floor(differenceInSeconds) + ' second' : Math.floor(differenceInSeconds) + ' seconds'
-  }
-
   fetchPosts(page: number, pageSize: number): void {
     if (this.firstGetRequestDateTime === null) {
       this.firstGetRequestDateTime = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
     }
     this.postService.getPostsPaginate(page, pageSize, this.firstGetRequestDateTime!!)
       .pipe(
-        map((data) =>
-          data.map(t => {
-            let objectURL = 'data:image/png;base64,' + t.image;
-            let image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-            return {
-              id: t.id,
-              muscles: t.muscles,
-              dateCreated: t.dateCreated,
-              createdBefore: this.formatAndCalculateDifferenceBetweenTwoDates(new Date(), new Date(t.dateCreated)),
-              description: t.description,
-              image: image,
-              user: t.user,
-              likedBy: t.likedBy,
-            } as Post
-          })
-        ))
+        map((data) => this.postService.transformPost(data)))
       .subscribe({
         next: data => {
           if (this.posts === undefined) {
@@ -70,7 +39,7 @@ export class NewsFeedComponent implements OnInit {
           }
         },
         error: () => {
-          console.log("epicentar")
+          console.log("error")
         }
       })
   }
