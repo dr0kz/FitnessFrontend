@@ -45,6 +45,7 @@ export class NewsFeedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('NGON')
     this.fetchPosts(0, this.pageSize);
   }
 
