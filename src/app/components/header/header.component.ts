@@ -55,10 +55,11 @@ export class HeaderComponent implements OnInit {
       })
     ).subscribe((data) => {
       this.users = data
-      if (data.length === 0) {
-        this.router.navigate([])
-      }
     })
+  }
+
+  onOutOfFocus(){
+    this.users = undefined
   }
 
   onLogOut() {

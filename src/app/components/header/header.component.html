@@ -5,8 +5,9 @@
   <div class="col col-xs-4 d-flex align-items-center justify-content-end pe-0">
     <mat-icon>search</mat-icon>
     <div class="position-relative">
-      <input [formControl]="searchForm" placeholder="Search" class="me-4 search-input border-light" type="text"/>
-      <div *ngIf="users!==undefined && users.length!==0"  style="left:;-100px; margin:auto; width:400px; max-height: 300px; overflow: auto;" class="mt-1 p-2 border position-absolute bg-white">
+      <input (blur)="onOutOfFocus()" [formControl]="searchForm" placeholder="Search" class="me-4 search-input border-light" type="text"/>
+      <div *ngIf="users!=undefined" class="searchResult overflow-auto mt-1 p-2 border position-absolute bg-white">
+        <p  *ngIf="users.length===0">No results found</p>
         <div *ngFor="let user of users" class="mb-2">
             <div class="d-flex align-items-center">
               <img [src]="user.image" width="50" height="50" class="rounded-circle"/>
