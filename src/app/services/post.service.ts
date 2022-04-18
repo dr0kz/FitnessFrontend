@@ -21,12 +21,15 @@ export class PostService {
   }
 
   createPost(formData: FormData): Observable<Response<any>> {
-    console.log(formData.get("image"))
     return this.http.post<Response<any>>('/api/posts/add', formData);
   }
 
   deletePost(postId: number) {
-    return this.http.delete(`/api/posts/${postId}`)
+    return this.http.delete(`/api/posts/${postId}`);
+  }
+
+  likeOrDislikePost(postId: number) {
+    return this.http.put(`/api/posts/likeOrDislike/${postId}`, {});
   }
 
   //update na post kako sto zborevme nema da ima tuku samo delete ke imame? ako ima togas ke se napravi plus view na frontend da se stavi

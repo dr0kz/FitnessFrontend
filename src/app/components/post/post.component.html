@@ -16,8 +16,8 @@
   <div class="d-flex mt-2 flex-column justify-content-between">
     <div class="d-flex p-2 justify-content-between">
       <div class="d-flex" >
-        <mat-icon>favorite</mat-icon>
-        <p>{{post?.muscles}}</p>
+        <img class="like-icon" [ngClass]="post?.likedBy ? 'post-liked' : ''" (click)="likeOrDislikePost(post?.id!!)" src="/assets/images/top.png" width="25" height="25"/>
+        <h4 class="ps-1">{{post?.muscles}}</h4>
       </div>
       <div>
         <p>{{post?.createdBefore}}</p>

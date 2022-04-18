@@ -8,5 +8,6 @@ export interface Post {
   createdBefore: string,
   description: string,
   image: string,
-  user: User  //user who created the post
+  user: User,  //user who created the post
+  likedBy: boolean,
 }

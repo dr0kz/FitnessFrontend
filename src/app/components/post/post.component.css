@@ -1,0 +1,6 @@
+.like-icon:hover{
+  cursor:pointer;
+}
+.post-liked{
+  filter: invert(48%) sepia(77%) saturate(3207%) hue-rotate(320deg) brightness(95%) contrast(80%);
+}

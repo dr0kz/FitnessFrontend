@@ -37,11 +37,10 @@ export class NewsFeedComponent implements OnInit {
       return Math.floor(differenceInMinutes) == 1 ? Math.floor(differenceInMinutes) + ' minute' : Math.floor(differenceInMinutes) + ' minutes'
     }
     return Math.floor(differenceInSeconds) == 1 ? Math.floor(differenceInSeconds) + ' second' : Math.floor(differenceInSeconds) + ' seconds'
-
   }
 
   fetchPosts(page: number, pageSize: number): void {
-    if(this.firstGetRequestDateTime===null){
+    if (this.firstGetRequestDateTime === null) {
       this.firstGetRequestDateTime = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
     }
     this.postService.getPostsPaginate(page, pageSize, this.firstGetRequestDateTime!!)
@@ -57,16 +56,17 @@ export class NewsFeedComponent implements OnInit {
               createdBefore: this.formatAndCalculateDifferenceBetweenTwoDates(new Date(), new Date(t.dateCreated)),
               description: t.description,
               image: image,
-              user: t.user
+              user: t.user,
+              likedBy: t.likedBy,
             } as Post
           })
         ))
       .subscribe({
         next: data => {
-          if(this.posts===undefined){
+          if (this.posts === undefined) {
             this.posts = data
-          }else{
-            this.posts = [...this.posts,...data]
+          } else {
+            this.posts = [...this.posts, ...data]
           }
         },
         error: () => {
