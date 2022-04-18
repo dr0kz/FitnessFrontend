@@ -13,6 +13,9 @@ export class UserService {
   constructor(private http: HttpClient,
               private sanitizer: DomSanitizer,) {
   }
+  findAllBySearchText(searchText: string): Observable<User[]> {
+    return this.http.get<User[]>(`/api/users/find-all-by-search-text?searchText=${searchText}`);
+  }
 
   findAllBySearchText(searchText: string): Observable<User[]> {
     return this.http.get<User[]>(`/api/users/find-all-by-search-text?searchText=${searchText}`);

@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   searchForm = new FormControl();
   users: UserProjection[] | undefined
+  usersTemp: UserProjection[] | undefined
   errorMessage = ''
 
   constructor(private tokenService: TokenStorageService,
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.searchForm.valueChanges.pipe(
       debounce(t => interval(390)),
       distinctUntilChanged(),
@@ -42,23 +44,29 @@ export class HeaderComponent implements OnInit {
     this.route.queryParamMap.pipe(
       filter(t => t.has('searchText')),
       map(t => t.get('searchText')!),
-      switchMap((searchText) => {
-        if(searchText.length===0){
+      switchMap((searchText) => this.userService.findAllBySearchText(searchText).pipe(
+        catchError(() => {
+          this.errorMessage = 'Error fetching data';
           return of([])
-        }
-        return this.userService.findAllBySearchText(searchText).pipe(
-          catchError(() => {
-            this.errorMessage = 'Error fetching data';
-            return of([])
-          })
-        )
-      })
-    ).subscribe((data) => {
-      this.users = data
-      if (data.length === 0) {
-        this.router.navigate([])
+        }),
+        map(k => ({searchText: searchText, users: k}))
+      ))
+    ).subscribe(({searchText, users}) => {
+      if (searchText.length === 0) {
+        this.users = undefined
+      } else {
+        this.users = users
       }
     })
+  }
+
+  onFocus() {
+    this.users = this.usersTemp?.map(e => ({...e}));
+  }
+
+  onOutOfFocus() {
+    this.usersTemp = this.users?.map(e => ({...e}));
+    this.users = undefined
   }
 
   onLogOut() {
