@@ -6,15 +6,15 @@
         <div class="mt-5">
           <div class="div-holders mt-2 ">
             <span class="holders">Name</span>
-            <input formControlName="name" class="form form-control" type="text" placeholder="Name" />
+            <input formControlName="name" class="form form-control" type="text" placeholder="{{user?.name}}" />
           </div>
           <div class="div-holders mt-2">
             <span class="holders">Surname</span>
-            <input formControlName="surname" class="form form-control" type="text" placeholder="Surname" />
+            <input formControlName="surname" class="form form-control" type="text" placeholder="{{user?.surname}}" />
           </div>
           <div class="div-holders mt-2 ">
             <span class="holders">Email</span>
-            <input formControlName="email" class="form form-control" type="text" placeholder="Email" />
+            <input formControlName="email" class="form form-control" type="text" placeholder="{{user?.email}}" />
           </div>
           <div class="div-holders mt-2 ">
             <span class="holders">Password</span>
@@ -26,7 +26,7 @@
           </div>
           <div class="div-holders mt-2 ">
             <span class="holders">Description</span>
-            <input formControlName="description" class="form form-control" type="textarea" placeholder="Description">
+            <input formControlName="description" class="form form-control" type="text" placeholder="{{user?.description != null ? user?.description : 'Description'}}">
           </div>
           <div class="bottom row mt-5">
             <div class="image col-md-6 col-sm-12">
@@ -35,7 +35,7 @@
                   <span class="d-flex justify-content-center align-items-center holders">Profile image</span>
                 </div>
                 <div class="d-flex justify-content-center align-items-center mt-2">
-                  <img src="/assets/images/profile-icon.png" width="130" height="130"  alt="profile picture"/>
+                  <img src="{{user?.image != null ? user?.image : '/assets/images/profile-icon.png'}}" width="130" height="130"  alt="profile picture"/>
                 </div>
               </div>
             </div>

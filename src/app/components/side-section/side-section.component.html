@@ -7,7 +7,7 @@
   <p class="mb-0">1200 followers</p>
   <button class="mt-2 follow-btn btn btn-info">Follow</button>
   <span class="border-top mt-3 w-100"></span>
-  <p class="mt-1 p-2 text-justify">My name is Angela Petkova and I am a Junior Web Developer for Oswald Technologies. I am an accomplished coder and programmer, and I enjoy using my skills to contribute to the exciting technological advances that happen every day at Oswald Tech. I graduated from the California Institute of Technology in 2016 with a Bachelor's Degree in Software Development. While in school, I earned the 2015 Edmund Gains Award for my exemplary academic performance and leadership skills.</p>
+  <p *ngIf="user!=undefined" class="mt-1 p-2 text-justify">{{user.description}}</p>
   <span class="border-top mt-0 mb-3 w-100"></span>
 </div>
 

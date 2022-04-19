@@ -17,11 +17,7 @@ export class UserService {
     return this.http.get<User[]>(`/api/users/find-all-by-search-text?searchText=${searchText}`);
   }
 
-  findAllBySearchText(searchText: string): Observable<User[]> {
-    return this.http.get<User[]>(`/api/users/find-all-by-search-text?searchText=${searchText}`);
-  }
-
-  editProfile(formData: FormData): Observable<Response<any>> {
+  editProfile(formData: FormData): Observable<Response<User>> {
     return this.http.put<Response<any>>('/api/users/edit-profile', formData);
   }
 
