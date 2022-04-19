@@ -21,4 +21,13 @@ export class UserService {
     return this.http.put<Response<any>>('/api/users/edit-profile', formData);
   }
 
+  followUnfollowUser(followerId: number){
+    return this.http.put(`/api/users/follow?userFollowerId=${followerId}`,{});
+  }
+
+  findById(id: number): Observable<User> {
+    return this.http.get<User>(`/api/users/${id}`)
+  }
+
+
 }

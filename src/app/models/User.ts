@@ -10,4 +10,7 @@ export interface User {
   description: string,
   role: string,
   token: string,
+  followersNum: number,
+  followingNum: number,
+  followedBy: boolean
 }
