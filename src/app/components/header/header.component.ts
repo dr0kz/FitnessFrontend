@@ -16,7 +16,8 @@ export class HeaderComponent implements OnInit {
   searchForm = new FormControl();
   users: UserProjection[] | undefined
   usersTemp: UserProjection[] | undefined
-  errorMessage = ''
+  myId: number | undefined
+  mouseOverSearch = false
 
   constructor(private tokenService: TokenStorageService,
               private router: Router,
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.myId = this.tokenService.getUser()?.id
 
     this.searchForm.valueChanges.pipe(
       debounce(t => interval(390)),
@@ -45,13 +47,10 @@ export class HeaderComponent implements OnInit {
       filter(t => t.has('searchText')),
       map(t => t.get('searchText')!),
       switchMap((searchText) => this.userService.findAllBySearchText(searchText).pipe(
-        catchError(() => {
-          this.errorMessage = 'Error fetching data';
-          return of([])
-        }),
         map(k => ({searchText: searchText, users: k}))
       ))
     ).subscribe(({searchText, users}) => {
+      this.searchForm.setValue(searchText)
       if (searchText.length === 0) {
         this.users = undefined
       } else {
@@ -60,17 +59,28 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  onMouseOverSearch() {
+    this.mouseOverSearch = true;
+  }
+
+  onMouseLeaveSearch() {
+    this.mouseOverSearch = false;
+  }
+
   onFocus() {
     this.users = this.usersTemp?.map(e => ({...e}));
   }
 
   onOutOfFocus() {
-    this.usersTemp = this.users?.map(e => ({...e}));
-    this.users = undefined
+    if (!this.mouseOverSearch) {
+      this.usersTemp = this.users?.map(e => ({...e}));
+      this.users = undefined
+    }
   }
 
   onLogOut() {
     this.tokenService.signOut();
     window.location.href = '/login';
   }
+
 }

@@ -22,6 +22,10 @@ export class PostService {
     return this.http.get<Post[]>(`/api/posts/find-all-by-user`);
   }
 
+  getPostsByUserId(id: number): Observable<Post[]> {
+    return this.http.get<Post[]>(`/api/posts/find-all-by-user/${id}`,);
+  }
+
   createPost(formData: FormData): Observable<Response<any>> {
     return this.http.post<Response<any>>('/api/posts/add', formData);
   }
