@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: 'edit-profile', component: EditProfileComponent },
       { path: 'workout-programs/create', component: CreateWorkoutProgramComponent},
       { path: 'workout-programs/edit', component: EditWorkoutProgramComponent},
-      { path: 'profile/posts', component: ProfilePostsComponent},
+      { path: 'profile/:id/posts', component: ProfilePostsComponent},
       { path: 'profile/workout-programs', component: ProfileWorkoutProgramsComponent}
     ]
   },
