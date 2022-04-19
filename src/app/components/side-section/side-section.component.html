@@ -1,5 +1,5 @@
 <div class="mt-2 d-flex flex-column align-items-center bg-white">
-  <img class="rounded-circle" width="160" height="160" src="/assets/images/face.jpg">
+  <img class="rounded-circle" width="160" height="160" [src]="user!=undefined ? user.image : '/assets/images/profile-icon.jpg'">
   <div class="mt-2">
     &#11088;&#11088;&#11088;
   </div>

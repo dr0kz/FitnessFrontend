@@ -5,6 +5,7 @@ import {catchError, debounce, distinctUntilChanged, filter, interval, map, of, s
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {UserProjection} from "../../models/projections/UserProjection";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit {
   searchForm = new FormControl();
   users: UserProjection[] | undefined
   usersTemp: UserProjection[] | undefined
+  currentUser: User | undefined
   myId: number | undefined
   mouseOverSearch = false
 
@@ -27,6 +29,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.myId = this.tokenService.getUser()?.id
+
+    this.currentUser = this.tokenService.getUser()
+
 
     this.searchForm.valueChanges.pipe(
       debounce(t => interval(390)),
