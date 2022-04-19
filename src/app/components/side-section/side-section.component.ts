@@ -10,6 +10,7 @@ import {TokenStorageService} from "../../services/token-storage.service";
 export class SideSectionComponent implements OnInit {
 
   user: User | undefined
+
   constructor(private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {

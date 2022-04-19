@@ -57,14 +57,13 @@ export class PostService {
   transformPost(posts: Post[]): Post[]{
     return posts.map(t => {
       let objectURL = 'data:image/png;base64,' + t.image;
-      let image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       return {
         id: t.id,
         muscles: t.muscles,
         dateCreated: t.dateCreated,
         createdBefore: this.formatAndCalculateDifferenceBetweenTwoDates(new Date(), new Date(t.dateCreated)),
         description: t.description,
-        image: image,
+        image: objectURL,
         user: t.user,
         likedBy: t.likedBy,
       } as Post
