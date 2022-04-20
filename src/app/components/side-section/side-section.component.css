@@ -3,4 +3,7 @@
   height:35px;
   border-radius: 20px !important;
 }
-
+.user-followed{
+  filter: invert(48%) sepia(77%) saturate(3207%) hue-rotate(320deg) brightness(95%) contrast(80%);
+  text-decoration-color: black;
+}
