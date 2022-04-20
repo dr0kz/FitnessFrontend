@@ -54,17 +54,25 @@ export class PostService {
     return Math.floor(differenceInSeconds) == 1 ? Math.floor(differenceInSeconds) + ' second' : Math.floor(differenceInSeconds) + ' seconds'
   }
 
-  transformPost(posts: Post[]): Post[]{
+
+  transformPost(posts: Post[]): Post[] {
     return posts.map(t => {
-      let objectURL = 'data:image/png;base64,' + t.image;
+      let postImage = 'data:image/png;base64,' + t.image;
+
+      let userImage = t.user.image==null ? null :  'data:image/png;base64,' + t.user.image;
       return {
         id: t.id,
         muscles: t.muscles,
         dateCreated: t.dateCreated,
         createdBefore: this.formatAndCalculateDifferenceBetweenTwoDates(new Date(), new Date(t.dateCreated)),
         description: t.description,
-        image: objectURL,
-        user: t.user,
+        image: postImage,
+        user: {
+          id: t.user.id,
+          name: t.user.name,
+          surname: t.user.surname,
+          image: userImage,
+        },
         likedBy: t.likedBy,
       } as Post
     })

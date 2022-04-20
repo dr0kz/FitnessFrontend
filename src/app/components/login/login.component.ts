@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {TokenStorageService} from "../../services/token-storage.service";
@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css','../../app.component.css']
+  styleUrls: ['./login.component.css', '../../app.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       password: '',
     });
   }
+
   onSubmit(): void {
     if (this.loginForm.invalid) {
       return;
@@ -36,6 +37,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password)
       .subscribe({
         next: user => {
+          if (user.image != null) {
+            user.image = 'data:image/png;base64,' + user.image
+          }
           this.tokenService.saveToken(user.token)
           this.tokenService.saveUser(user)
           this.router.navigate(['/'])

@@ -2,7 +2,7 @@
   <div class="d-flex align-items-center justify-content-between mt-2  p-2 ">
     <div class="d-flex align-items-center">
       <div class="profile-image">
-        <img alt="Profile image" class="rounded-circle img-fluid" src="/assets/images/face.jpg"/>
+        <img alt="Profile image" class="w-100 h-100 rounded-circle img-fluid" src="{{post?.user?.image !=null ? post?.user?.image : '/assets/images/profile-icon.png'  }}"/>
       </div>
       <span class="ms-2">{{post?.user?.name + ' ' + post?.user?.surname}}</span>
     </div>

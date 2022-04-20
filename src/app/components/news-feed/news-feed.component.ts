@@ -2,8 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Post} from "../../models/Post";
 import {PostService} from "../../services/post.service";
 import {DomSanitizer} from "@angular/platform-browser";
-import {map} from "rxjs";
+import {map, tap} from "rxjs";
 import {DatePipe} from "@angular/common";
+import {EventListenerService} from "../../services/eventlistener.service";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-news-feed',
@@ -20,15 +22,21 @@ export class NewsFeedComponent implements OnInit {
 
   constructor(private postService: PostService,
               private sanitizer: DomSanitizer,
-              private datePipe: DatePipe,) {
+              private datePipe: DatePipe,
+              private eventListenerService: EventListenerService,
+              private tokenService: TokenStorageService) {
   }
 
   fetchPosts(page: number, pageSize: number): void {
+
+    this.eventListenerService.success(this.tokenService.getUser()!!)
+
     if (this.firstGetRequestDateTime === null) {
       this.firstGetRequestDateTime = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
     }
     this.postService.getPostsPaginate(page, pageSize, this.firstGetRequestDateTime!!)
       .pipe(
+        tap(t => console.log(t)),
         map((data) => this.postService.transformPost(data)))
       .subscribe({
         next: data => {
@@ -37,6 +45,7 @@ export class NewsFeedComponent implements OnInit {
           } else {
             this.posts = [...this.posts, ...data]
           }
+          console.log(data)
         },
         error: () => {
           console.log("error")

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "../../services/token-storage.service";
 import {FormControl} from "@angular/forms";
-import {catchError, debounce, distinctUntilChanged, filter, interval, map, of, switchMap} from "rxjs";
+import {catchError, debounce, distinctUntilChanged, filter, interval, map, of, switchMap, tap} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {UserProjection} from "../../models/projections/UserProjection";
@@ -31,6 +31,9 @@ export class HeaderComponent implements OnInit {
     this.myId = this.tokenService.getUser()?.id
 
     this.currentUser = this.tokenService.getUser()
+    if (this.currentUser?.image && !this.currentUser.image.startsWith('data:image/png;base64,')) {
+      this.currentUser.image = 'data:image/png;base64,' + this.currentUser.image
+    }
 
 
     this.searchForm.valueChanges.pipe(
@@ -52,7 +55,18 @@ export class HeaderComponent implements OnInit {
       filter(t => t.has('searchText')),
       map(t => t.get('searchText')!),
       switchMap((searchText) => this.userService.findAllBySearchText(searchText).pipe(
-        map(k => ({searchText: searchText, users: k}))
+        tap(t => console.log(t)),
+        map(k => ({
+          searchText: searchText, users: k.map(u => {
+            let userImage = 'data:image/png;base64,' + u.image;
+            return {
+              id: u.id,
+              name: u.name,
+              surname: u.surname,
+              image: userImage,
+            } as User
+          })
+        }))
       ))
     ).subscribe(({searchText, users}) => {
       this.searchForm.setValue(searchText)

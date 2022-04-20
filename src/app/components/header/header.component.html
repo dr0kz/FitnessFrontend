@@ -7,11 +7,12 @@
     <div class="position-relative" (focusout)="onOutOfFocus()" tabindex="1">
       <input (focusin)="onFocus()" [formControl]="searchForm" placeholder="Search"
              class="me-4 search-input border-light" type="text"/>
-      <div (mouseleave)="onMouseLeaveSearch()" (mouseover)="onMouseOverSearch()"  *ngIf="users!==undefined" class="searchResult overflow-auto mt-1 p-2 border position-absolute bg-white">
+      <div (mouseleave)="onMouseLeaveSearch()" (mouseover)="onMouseOverSearch()" *ngIf="users!==undefined"
+           class="searchResult overflow-auto mt-1 p-2 border position-absolute bg-white">
         <p *ngIf="users.length===0">No results found</p>
-        <a  routerLink='/profile/{{user.id}}/posts' *ngFor="let user of users" class="mb-2">
-          <div class="d-flex align-items-center">
-            <img [src]="user.image" width="50" height="50" class="rounded-circle"/>
+        <a routerLink='/profile/{{user.id}}/posts' *ngFor="let user of users">
+          <div class="d-flex align-items-center mt-2 mb-2">
+            <img [src]="user.image" width="50" height="50" class="border rounded-circle"/>
             <span class="ps-2">{{user.name + ' ' + user.surname}}</span>
           </div>
         </a>
@@ -21,7 +22,9 @@
       <mat-icon class="home-icon me-3">home</mat-icon>
     </a>
     <div class="dropdown profile-image">
-      <img  alt="Profile image" src="{{currentUser!=undefined && currentUser.image!=null ? currentUser.image : '/assets/images/profile-icon.png'}}" class="w-100 h-100 dropdown-toggle rounded-circle img-fluid"
+      <img alt="Profile image"
+           src="{{currentUser!=undefined && currentUser.image!=null ? currentUser.image : '/assets/images/profile-icon.png'}}"
+           class="w-100 h-100 dropdown-toggle rounded-circle img-fluid"
            data-bs-toggle="dropdown"
            aria-expanded="false"/>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
