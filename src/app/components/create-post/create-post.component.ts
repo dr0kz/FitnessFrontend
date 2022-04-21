@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {PostService} from "../../services/post.service";
 import {Router} from "@angular/router";
+import {User} from "../../models/User";
+import {TokenStorageService} from "../../services/token-storage.service";
 
 @Component({
   selector: 'app-create-post',
@@ -10,12 +12,18 @@ import {Router} from "@angular/router";
 })
 export class CreatePostComponent implements OnInit{
 
+  user: User | undefined
   createPostForm!: FormGroup
+
   constructor(private postService: PostService,
               private router: Router,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private tokenService: TokenStorageService) {
   }
   ngOnInit(): void {
+
+    this.user = this.tokenService.getUser()
+
     this.createPostForm = this.formBuilder.group({
       description: '',
       image: '',

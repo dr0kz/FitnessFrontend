@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {TokenStorageService} from "../../services/token-storage.service";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
               private tokenService: TokenStorageService,
-              private router: Router) {
+              private router: Router,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(email, password)
       .subscribe({
         next: user => {
+          console.log(user)
           if (user.image != null) {
             user.image = 'data:image/png;base64,' + user.image
           }
@@ -44,8 +47,12 @@ export class LoginComponent implements OnInit {
           this.tokenService.saveUser(user)
           this.router.navigate(['/'])
         },
-        error: () => {
-          console.log('error')
+        error: (e) => {
+          this.snackBar.open(e.error, 'X', {
+            horizontalPosition: "center",
+            verticalPosition: "bottom",
+            duration: 3000,
+          });
         }
       })
   }

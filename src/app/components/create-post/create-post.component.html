@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center bg-white border rounded p-2">
-  <img class="ms-0 rounded-circle" width="30" height="30" src="/assets/images/face.jpg" />
+  <img class="ms-0 rounded-circle" width="30" height="30" src="{{user?.image!=null ? user?.image : '/assets/images/profile-icon.png'}}" />
   <form class="d-flex w-100" [formGroup]="createPostForm" (ngSubmit)="onSubmit()">
   <input formControlName="description" class="ms-2 form form-control holders me-2" type="textarea" placeholder="What muscles are you pumping today?" />
   <div class="d-flex flex-column align-items-center">

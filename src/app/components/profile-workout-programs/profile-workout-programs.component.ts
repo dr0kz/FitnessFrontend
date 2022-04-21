@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from "../../models/User";
+import {EventListenerService} from "../../services/eventlistener.service";
 
 @Component({
   selector: 'app-profile-workout-programs',
   templateUrl: './profile-workout-programs.component.html',
-  styleUrls: ['./profile-workout-programs.component.css','../../app.component.css']
+  styleUrls: ['./profile-workout-programs.component.css', '../../app.component.css']
 })
-export class ProfileWorkoutProgramsComponent implements OnInit {
+export class ProfileWorkoutProgramsComponent{
 
-  constructor() { }
+  user: User | undefined
 
-  ngOnInit(): void {
+  constructor(private eventListenerService: EventListenerService) {
+    this.eventListenerService.$success.subscribe((user) => this.user = user)
   }
-
 }

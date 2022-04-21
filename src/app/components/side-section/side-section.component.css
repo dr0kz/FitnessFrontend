@@ -2,8 +2,9 @@
   width:150px;
   height:35px;
   border-radius: 20px !important;
+  border:2px solid black;
 }
 .user-followed{
-  filter: invert(48%) sepia(77%) saturate(3207%) hue-rotate(320deg) brightness(95%) contrast(80%);
+  background-color: #ff7777;
   text-decoration-color: black;
 }

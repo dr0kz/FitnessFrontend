@@ -30,7 +30,11 @@ export class TokenStorageService {
   getUser(): User | undefined {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
-      return JSON.parse(user);
+      const parsedUser =  JSON.parse(user);
+      if(parsedUser.image && !parsedUser.image.startsWith('data:image/png;base64,')){
+        parsedUser.image = 'data:image/png;base64,'+parsedUser.image
+      }
+      return parsedUser
     }
     return undefined;
   }

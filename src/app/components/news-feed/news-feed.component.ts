@@ -29,15 +29,13 @@ export class NewsFeedComponent implements OnInit {
 
   fetchPosts(page: number, pageSize: number): void {
 
-    this.eventListenerService.success(this.tokenService.getUser()!!)
-
     if (this.firstGetRequestDateTime === null) {
       this.firstGetRequestDateTime = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
     }
+
+    this.eventListenerService.success(this.tokenService.getUser()!!)
+
     this.postService.getPostsPaginate(page, pageSize, this.firstGetRequestDateTime!!)
-      .pipe(
-        tap(t => console.log(t)),
-        map((data) => this.postService.transformPost(data)))
       .subscribe({
         next: data => {
           if (this.posts === undefined) {
@@ -45,7 +43,6 @@ export class NewsFeedComponent implements OnInit {
           } else {
             this.posts = [...this.posts, ...data]
           }
-          console.log(data)
         },
         error: () => {
           console.log("error")
