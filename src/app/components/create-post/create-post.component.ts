@@ -44,7 +44,6 @@ export class CreatePostComponent implements OnInit{
     let formData = new FormData();
     formData.append("image", this.createPostForm.get('image')!!.value)
     formData.append("description", this.createPostForm.controls['description'].value)
-
     this.postService.createPost(formData)
       .subscribe({
         next: post => {

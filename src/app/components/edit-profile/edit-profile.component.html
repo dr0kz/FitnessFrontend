@@ -5,28 +5,28 @@
       <form [formGroup]="editProfile" (ngSubmit)="onSubmit()">
         <div class="mt-5">
           <div class="div-holders mt-2 ">
-            <span class="holders">Name</span>
+            <mat-icon matTooltip="Name">person</mat-icon>
             <input formControlName="name" class="form form-control" type="text" placeholder="{{user?.name}}" />
           </div>
           <div class="div-holders mt-2">
-            <span class="holders">Surname</span>
+            <mat-icon matTooltip="Surname">person</mat-icon>
             <input formControlName="surname" class="form form-control" type="text" placeholder="{{user?.surname}}" />
           </div>
           <div class="div-holders mt-2 ">
-            <span class="holders">Email</span>
+            <mat-icon matTooltip="Email"> email</mat-icon>
             <input formControlName="email" class="form form-control" type="text" placeholder="{{user?.email}}" />
           </div>
           <div class="div-holders mt-2 ">
-            <span class="holders">Password</span>
+            <mat-icon matTooltip="Password" >vpn_key</mat-icon>
             <input formControlName="password" class="form form-control" type="password" placeholder="Password" />
           </div>
           <div class="div-holders mt-2 ">
-            <span class="holders">Confirm Password</span>
+            <mat-icon matTooltip="Confirm Password">vpn_key</mat-icon>
             <input formControlName="confirmPassword" class="form form-control" type="password" placeholder="Confirm Password" />
           </div>
           <div class="div-holders mt-2 ">
-            <span class="holders">Description</span>
-            <input formControlName="description" class="form form-control" type="text" placeholder="{{user?.description != null ? user?.description : 'Description'}}">
+            <mat-icon matTooltip="Enter description for yourself">description</mat-icon>
+            <input formControlName="description" class="form form-control" type="text" placeholder="{{user?.description != null || user?.description != '' ? user?.description : 'Description'}}">
           </div>
           <div class="bottom row mt-5">
             <div class="image col-md-6 col-sm-12">

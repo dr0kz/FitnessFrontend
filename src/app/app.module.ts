@@ -29,6 +29,10 @@ import {AuthInterceptor} from './helpers/auth_interceptor'
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {DatePipe} from '@angular/common';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -48,19 +52,23 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     WorkoutProgramComponent,
     EditWorkoutProgramComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MDBBootstrapModule.forRoot(),
-    BrowserAnimationsModule,
-    MatSliderModule,
-    MatIconModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    InfiniteScrollModule,
-    MatSnackBarModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MDBBootstrapModule.forRoot(),
+        BrowserAnimationsModule,
+        MatSliderModule,
+        MatIconModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        InfiniteScrollModule,
+        MatSnackBarModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatTooltipModule,
+    ],
   providers: [DatePipe,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],

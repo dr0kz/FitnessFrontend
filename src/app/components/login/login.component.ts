@@ -13,6 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+  hide = true;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,

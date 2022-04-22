@@ -13,6 +13,7 @@ import {Subject} from "rxjs";
 export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
+  hide = true;
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,

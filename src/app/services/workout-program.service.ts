@@ -21,5 +21,14 @@ export class WorkoutProgramService {
     return this.http.get<Response<any>>(`/api/workout-program/${workoutProgramId}`);
   }
 
+  buy(workoutProgramId: number): Observable<Response<any>> {
+    return this.http.put<Response<any>>(`/api/workout-program/${workoutProgramId}`,{})
+  }
+
+  delete(workoutProgramId: number): Observable<Response<any>> {
+    return this.http.delete<Response<any>>(`/api/workout-program/delete/${workoutProgramId}`)
+  }
+
+  //create()
 
 }
