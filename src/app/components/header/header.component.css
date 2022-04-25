@@ -2,6 +2,20 @@
   height:28px;
   border-radius: 10px;
 }
+.search-input-dropdown{
+  height:28px;
+  border-radius: 10px;
+}
+@media only screen and (min-width:421px){
+  .search-input-dropdown{
+    display: none;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .search-input, .search-icon{
+    display: none;
+  }
+}
 .home-icon{
   transform: scale(1.5);
 }

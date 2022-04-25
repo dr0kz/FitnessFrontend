@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'workout-programs/create', component: CreateWorkoutProgramComponent},
       { path: 'workout-programs/edit', component: EditWorkoutProgramComponent},
       { path: 'profile/:id/posts', component: ProfilePostsComponent},
-      { path: 'profile/workout-programs', component: ProfileWorkoutProgramsComponent},
+      { path: 'profile/:id/workout-programs', component: ProfileWorkoutProgramsComponent},
       { path: 'bmi', component: BmiCalculatorComponent}
     ]
   },

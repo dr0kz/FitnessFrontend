@@ -13,9 +13,13 @@ export class WorkoutProgramService {
 
   constructor(private http: HttpClient) { }
 
-  findAllByTrainer(trainerId: number): Observable<WorkoutProgramProjection[]>{
-    return this.http.get<WorkoutProgramProjection[]>(`/api/workout-program/list/${trainerId}`);
+  findAllByTrainer(trainerId: number): Observable<WorkoutProgram[]>{
+    return this.http.get<WorkoutProgram[]>(`/api/workout-program/list/${trainerId}`);
   }
+
+  // findAllBought():Observable<WorkoutProgramProjection[]>{
+  //
+  // }
 
   findById(workoutProgramId: number): Observable<Response<WorkoutProgram>> {
     return this.http.get<Response<any>>(`/api/workout-program/${workoutProgramId}`);

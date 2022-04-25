@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {WorkoutProgram} from "../../models/WorkoutProgram";
 
 @Component({
   selector: 'app-workout-program',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./workout-program.component.css']
 })
 export class WorkoutProgramComponent implements OnInit {
+
+  @Input() workoutProgram: WorkoutProgram | undefined
 
   constructor() { }
 

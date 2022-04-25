@@ -1,7 +1,7 @@
 <div class="d-flex flex-column justify-content-center">
   <div class="d-flex justify-content-center bg-white pt-2 align-items-center mb-3 border rounded">
     <a class="me-2 h4" routerLink="/profile/{{user?.id}}/posts">Posts</a>
-    <a class="ms-2 h4" routerLink="/profile/workout-programs">Workout Programs</a>
+    <a class="ms-2 h4" routerLink="/profile/{{user?.id}}/workout-programs">Workout Programs</a>
   </div>
   <div *ngIf="posts?.length===0">
     <p class="text-center">You do not have any posts</p>

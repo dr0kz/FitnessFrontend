@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from "../../models/Post";
 import {PostService} from "../../services/post.service";
-import {catchError, filter, map, of, switchMap} from "rxjs";
+import {catchError, filter, map, of, switchMap, tap} from "rxjs";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EventListenerService} from "../../services/eventlistener.service";
@@ -43,6 +43,5 @@ export class ProfilePostsComponent implements OnInit {
       this.user = data.user
       this.eventListenerService.success(data.user)
     })
-
   }
 }

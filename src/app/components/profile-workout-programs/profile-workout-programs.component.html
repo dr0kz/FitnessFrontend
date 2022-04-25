@@ -5,16 +5,14 @@
   </div>
   <div class="mt-2">
     <div class="d-flex flex-column rounded-3 position-relative bg-white border rounded">
-      <!-- target na ovie a treba da bide /profile/profile_id/workout-programs/workout_program_id-->
-      <a class="d-flex flex-column m-2 linkovi " id="selektirano">Workout program1 name</a>
-      <a class="d-flex flex-column m-2 linkovi">Workout program2 name</a>
-      <a class="d-flex flex-column m-2 linkovi">Workout program3 name</a>
-      <button class="btn btn-primary m-2 w-25" routerLink="/workout-programs/create">Create New</button>
+      <a *ngFor="let workoutProgram of workoutPrograms" class="d-flex flex-column m-2 linkovi">{{workoutProgram.name}}</a>
+      <button *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id" class="btn btn-primary m-2 w-25" routerLink="/workout-programs/create">
+        Create New
+      </button>
     </div>
     <hr>
     <div class="d-flex flex-column rounded-3 position-relative mt-2">
-      <app-workout-program></app-workout-program>
-
+      <app-workout-program [workoutProgram]="selectedWorkoutProgram"></app-workout-program>
     </div>
   </div>
 </div>

@@ -2,28 +2,25 @@
   <div>
     <!-- Name -->
     <div class="div-holders mt-2 ms-2">
-      <span class="holders">WK1 Name</span>
+      <span class="holders">{{'Program Name: '+workoutProgram?.name}}</span>
     </div>
 
     <!-- Trainer -->
     <div class="div-holders mt-3 ms-2">
-      <span class="holders">WK1 Trainer</span>
+      <span class="holders">{{'Trainer: '+workoutProgram?.userTrainer?.name+' '+workoutProgram?.userTrainer?.surname}}</span>
     </div>
 
     <!-- Price -->
     <div class="div-holders mt-3 ms-2">
-      <span class="holders">WK1 Price</span>
+      <span class="holders">{{'Price $'+workoutProgram?.price}}</span>
     </div>
 
     <!-- Description -->
     <div class="div-holders mt-3 ms-2">
-      <span class="holders">WK1 Description</span>
+      <span class="holders">Description</span>
       <div class="m-3">
         <span>
-          Ovaa programa e nameneta za zgolemuvanje na kilazata i ke se vezba toa i toa
-          bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-          bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-          bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+          {{workoutProgram?.description}}
         </span>
       </div>
     </div>
