@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {WorkoutProgramService} from "../../services/workout-program.service";
 
 @Component({
@@ -10,43 +9,56 @@ import {WorkoutProgramService} from "../../services/workout-program.service";
 })
 export class CreateWorkoutProgramComponent implements OnInit {
 
-  numberOfWeeks: Number = 0
-  createWorkoutProgramForm!: FormGroup
-  //day!: FormGroup
-  // days!: FormArray
+  numberOfWeeks: number = 0
+  workoutProgramForm!: FormGroup
 
-  constructor(private workoutProgramService: WorkoutProgramService,
-              private router: Router,
-              private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private workoutProgramService: WorkoutProgramService) {
   }
 
   ngOnInit(): void {
-
-    this.createWorkoutProgramForm = this.formBuilder.group({
-      name: '',
-      price: '',
-      description: '',
-      numberWeeks: '',
-      dayTitle: [],
-      dayDescription: [],
-      dayVideo: [],
-    });
+    this.workoutProgramForm = this.formBuilder.group({
+        name: '',
+        price: 0,
+        description: '',
+        days: this.formBuilder.array([])
+      }
+    );
   }
 
-  numSequence(n: Number){
-    return Array.from(Array(n).keys()).map(t => t+1)
+  get days(): FormArray {
+    return this.workoutProgramForm.get("days") as FormArray;
   }
+
+  numberOfWeeksChange(event: Event) {
+    this.numberOfWeeks = +(event.target as HTMLInputElement).value;
+    this.days.clear()
+
+    for (let i = 0; i < this.numberOfWeeks * 7; i++) {
+      const dayForm = this.formBuilder.group({
+        title: '',
+        description: '',
+        video: ''
+      })
+      this.days.push(dayForm)
+    }
+  }
+
+  numSequence(n: Number) {
+    return Array.from(Array(n).keys()).map(t => t + 1)
+  }
+
 
   onSubmit(): void {
-    console.log(this.createWorkoutProgramForm.getRawValue())
-    console.log("************************************")
-    //this.createWorkoutProgramForm.value
-    //this.createWorkoutProgramForm.patchValue()
-    // let name = this.createWorkoutProgramForm.controls['name'].value
-    // let price = this.createWorkoutProgramForm.controls['price'].value
-    // let description = this.createWorkoutProgramForm.controls['description'].value
-    // let numberWeeks = this.createWorkoutProgramForm.controls['numberWeeks'].value
+    if (this.workoutProgramForm.invalid) {
+      return;
+    }
+    let name = this.workoutProgramForm.controls['name'].value;
+    let price = this.workoutProgramForm.controls['price'].value;
+    let description = this.workoutProgramForm.controls['description'].value;
+    let days = this.workoutProgramForm.controls['days'].value;
 
-
+    this.workoutProgramService.create(name, price, description, days)
+      .subscribe(t => console.log(t))
   }
 }

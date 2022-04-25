@@ -23,6 +23,7 @@ export class ProfilePostsComponent implements OnInit {
               private route: ActivatedRoute,
               private eventListenerService: EventListenerService,
               private userService: UserService,) {
+    this.eventListenerService.$success.subscribe((user) => this.user = user)
   }
 
   ngOnInit(): void {

@@ -5,5 +5,9 @@ export interface WorkoutProgram {
   name: string,
   price: number,
   description: string,
-  user: User  //trainer who created the workout program
+  days: {
+    title: string,
+    description: string,
+    video: string,
+  }
 }

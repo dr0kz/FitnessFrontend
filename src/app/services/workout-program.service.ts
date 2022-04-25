@@ -29,6 +29,14 @@ export class WorkoutProgramService {
     return this.http.delete<Response<any>>(`/api/workout-program/delete/${workoutProgramId}`)
   }
 
+  create(name: string, price:number, description: string, days: []): Observable<Response<string>> {
+    return this.http.post<Response<string>>('/api/workout-program/create', {
+      name: name,
+      description: description,
+      price: price,
+      days: days
+    });
+  }
   //create()
 
 }
