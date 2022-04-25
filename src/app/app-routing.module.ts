@@ -10,6 +10,7 @@ import {ProfilePostsComponent} from "./components/profile-posts/profile-posts.co
 import {ProfileWorkoutProgramsComponent} from "./components/profile-workout-programs/profile-workout-programs.component";
 import {EditWorkoutProgramComponent} from "./components/edit-workout-program/edit-workout-program.component";
 import {AuthGuard} from "./helpers/authguard";
+import {BmiCalculatorComponent} from "./components/bmi-calculator/bmi-calculator.component";
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
       { path: 'workout-programs/create', component: CreateWorkoutProgramComponent},
       { path: 'workout-programs/edit', component: EditWorkoutProgramComponent},
       { path: 'profile/:id/posts', component: ProfilePostsComponent},
-      { path: 'profile/workout-programs', component: ProfileWorkoutProgramsComponent}
+      { path: 'profile/workout-programs', component: ProfileWorkoutProgramsComponent},
+      { path: 'bmi', component: BmiCalculatorComponent}
     ]
   },
   { path: 'login', component: LoginComponent },

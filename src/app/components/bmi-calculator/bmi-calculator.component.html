@@ -1,0 +1,44 @@
+<div class="border rounded bg-white p-3">
+  <div class="classs">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="jumbotron text-center">BMI Calculator</h3>
+          <br>
+          <form role="form" [formGroup]="calculateBmiForm" (ngSubmit)="onSubmit()">
+            <div id="metric">
+              <div class="form-group">
+                <label for="weight_kg">Weight (kg):</label>
+                <input type="number" formControlName="weight" name="weight_kg" id="weight_kg" placeholder="weight in kg" class="form-control">
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="height_cm">Height (cm):</label>
+                <input type="number" formControlName="height" name="height_cm" id="height_cm" placeholder="height in cm" class="form-control">
+              </div>
+            </div>
+            <br>
+            <div class="d-flex justify-content-center align-items-center">
+              <button class="btn btn-info mx-auto" >Calculate</button>
+            </div>
+          </form>
+          <br>
+          <div *ngIf="bmiIndex && bmiMeaning">
+            <h3>Calculated BMI results</h3>
+            <div class="bmi-cont">
+              <p>Your BMI index is:  <span class="bmiIndex">{{bmiIndex}}</span></p>
+              <p>That means you are:  <span class="bmiMeaning">{{bmiMeaning}}</span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <span>BMI Meanings</span><br>
+        <span class="text-muted">Underweight = 0 - 19</span><br>
+        <span class="text-muted">Normal weight = 19–24</span><br>
+        <span class="text-muted">Overweight > 24</span><br>
+      </div>
+    </div>
+  </div>
+</div>
