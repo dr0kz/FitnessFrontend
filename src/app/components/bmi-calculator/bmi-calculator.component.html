@@ -3,18 +3,20 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h3 class="jumbotron text-center">BMI Calculator</h3>
+          <h2 class="jumbotron text-center">BMI Calculator</h2>
           <br>
           <form role="form" [formGroup]="calculateBmiForm" (ngSubmit)="onSubmit()">
             <div id="metric">
               <div class="form-group">
                 <label for="weight_kg">Weight (kg):</label>
-                <input type="number" formControlName="weight" name="weight_kg" id="weight_kg" placeholder="weight in kg" class="form-control">
+                <input type="number" formControlName="weight" name="weight_kg" id="weight_kg"
+                       placeholder="weight in kg" class="form-control" required>
               </div>
               <br>
               <div class="form-group">
                 <label for="height_cm">Height (cm):</label>
-                <input type="number" formControlName="height" name="height_cm" id="height_cm" placeholder="height in cm" class="form-control">
+                <input type="number" formControlName="height" name="height_cm" id="height_cm"
+                       placeholder="height in cm" class="form-control" required>
               </div>
             </div>
             <br>
@@ -29,7 +31,9 @@
               <p>Your BMI index is:  <span class="bmiIndex">{{bmiIndex}}</span></p>
               <p>That means you are:  <span class="bmiMeaning">{{bmiMeaning}}</span></p>
             </div>
-
+          </div>
+          <div *ngIf="flag==true">
+            <p class="text-danger mt-2">Please enter positive values for both weight and height</p>
           </div>
         </div>
       </div>
