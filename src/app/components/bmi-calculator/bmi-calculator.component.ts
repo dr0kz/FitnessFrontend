@@ -29,6 +29,7 @@ export class BmiCalculatorComponent implements OnInit {
       let w = this.calculateBmiForm.get('weight')!!.value
       let h = this.calculateBmiForm.get('height')!!.value
       if(typeof w == "number" && typeof h == "number" && w>0 && h>0) {
+        this.flag = false
         this.bmiIndex = Math.round((this.calculateBmiIndex(w,h) + Number.EPSILON) * 100) / 100
         this.bmiMeaning = this.calculateBmiMeaning(this.bmiIndex)
       } else {
