@@ -1,9 +1,3 @@
-.linkovi{
-  font-size: 18px;
-}
-a:hover{
-
-}
-#selektirano{
+.selected-workout-program{
   color: #009da5;
 }

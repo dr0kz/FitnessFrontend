@@ -22,7 +22,7 @@ export class WorkoutProgramService {
   // }
 
   findById(workoutProgramId: number): Observable<Response<WorkoutProgram>> {
-    return this.http.get<Response<any>>(`/api/workout-program/${workoutProgramId}`);
+    return this.http.get<Response<WorkoutProgram>>(`/api/workout-program/${workoutProgramId}`);
   }
 
   buy(workoutProgramId: number): Observable<Response<any>> {

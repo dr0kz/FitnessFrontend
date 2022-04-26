@@ -25,15 +25,10 @@
       </div>
     </div>
 
-    <!-- TODO za generiranje na days kako ke treba da ide soodvetno so weeks-->
-    <div>
-
-    </div>
-
     <!-- kopcinja za edit i delete -->
     <div class="d-flex flex-row rounded-3 mt-3 ms-2 mb-2">
       <div class="d-flex ">
-        <button class="btn btn-secondary">Edit</button>
+        <a routerLink="/workout-programs/{{workoutProgram?.id}}/edit" class="btn btn-secondary">Edit</a>
       </div>
       <div class="d-flex ms-2">
         <button class="btn btn-danger">Delete</button>
