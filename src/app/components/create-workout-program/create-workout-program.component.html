@@ -16,12 +16,12 @@
         </div>
         <div class="div-holders mt-2">
           <span class="holders">Price</span>
-          <textarea formControlName="price" class="form form-control" type="number"
-                    placeholder="Description"></textarea>
+          <input formControlName="price" class="form form-control" type="number" min="0" required
+                    placeholder="Description"/>
         </div>
         <div class="div-holders mt-2 ">
           <span class="holders">Weeks</span>
-          <input (keyup)="numberOfWeeksChange($event)" class="form form-control" type="number" min="0"
+          <input (keyup)="numberOfWeeksChange($event)" class="form form-control" onwheel="this.blur()" type="number" min="0"
                  placeholder="Number Of Weeks"/>
         </div>
         <div class="d-flex flex-column mt-3" *ngIf="numberOfWeeks != 0">
