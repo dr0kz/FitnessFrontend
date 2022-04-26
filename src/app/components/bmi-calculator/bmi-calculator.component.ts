@@ -11,6 +11,7 @@ export class BmiCalculatorComponent implements OnInit {
   calculateBmiForm!: FormGroup
   bmiIndex!: number
   bmiMeaning!: string
+  flag: Boolean | undefined = undefined
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -21,7 +22,7 @@ export class BmiCalculatorComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     if (this.calculateBmiForm.invalid) {
       return;
     } else {
@@ -31,6 +32,7 @@ export class BmiCalculatorComponent implements OnInit {
         this.bmiIndex = Math.round((this.calculateBmiIndex(w,h) + Number.EPSILON) * 100) / 100
         this.bmiMeaning = this.calculateBmiMeaning(this.bmiIndex)
       } else {
+        this.flag = true
         return;
       }
     }
