@@ -8,5 +8,5 @@ export interface Day {
   description: string,
   video: string,
   week: number,
-  workoutProgram: WorkoutProgram //the workout program on which this day belongs
+  workoutProgram: WorkoutProgram
 }

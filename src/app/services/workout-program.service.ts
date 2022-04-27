@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {flatMap, map, Observable, switchMap} from "rxjs";
 import {WorkoutProgram} from "../models/WorkoutProgram";
 import {User} from "../models/User";
 import {WorkoutProgramProjection} from "../models/projections/WorkoutProgramProjection";
@@ -12,10 +12,11 @@ import {WorkoutProgramAndDay} from "../models/WorkoutProgramAndDay";
 })
 export class WorkoutProgramService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  findAllByUserId(userId: number): Observable<Response<WorkoutProgramAndDay[]>>{
-    return this.http.get<Response<WorkoutProgramAndDay[]>>(`/api/workout-program/list/${userId}`);
+  findAllByUserId(userId: number): Observable<Response<WorkoutProgramAndDay[]>> {
+    return this.http.get<Response<WorkoutProgramAndDay[]>>(`/api/workout-program/list/${userId}`)
   }
 
   // findAllBought():Observable<WorkoutProgramProjection[]>{
@@ -28,14 +29,14 @@ export class WorkoutProgramService {
   }
 
   buy(workoutProgramId: number): Observable<Response<any>> {
-    return this.http.put<Response<any>>(`/api/workout-program/${workoutProgramId}`,{})
+    return this.http.put<Response<any>>(`/api/workout-program/${workoutProgramId}`, {})
   }
 
   delete(workoutProgramId: number): Observable<Response<any>> {
     return this.http.delete<Response<any>>(`/api/workout-program/delete/${workoutProgramId}`)
   }
 
-  create(name: string, price:number, description: string, days: []): Observable<Response<string>> {
+  create(name: string, price: number, description: string, days: []): Observable<Response<string>> {
     return this.http.post<Response<string>>('/api/workout-program/create', {
       name: name,
       description: description,
@@ -43,6 +44,7 @@ export class WorkoutProgramService {
       days: days
     });
   }
+
   //create()
 
 }
