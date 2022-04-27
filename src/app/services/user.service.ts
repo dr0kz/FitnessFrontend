@@ -6,6 +6,7 @@ import {Response} from "../models/Response";
 import {User} from "../models/User";
 import {UserProjection} from "../models/projections/UserProjection";
 import {UserMapper} from "./UserMapper/UserMapper";
+import {Role} from "../models/Role";
 
 @Injectable({
   providedIn: 'root'
@@ -36,4 +37,9 @@ export class UserService {
       map(user => this.userMapper.transformUser(user)),
     )
   }
+
+  getRole(): Observable<Response<Role>>{
+    return this.http.get<Response<Role>>('/api/users/role')
+  }
+
 }

@@ -1,38 +1,45 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {WorkoutProgram} from "../../models/WorkoutProgram";
 import {User} from "../../models/User";
-import {EventListenerService} from "../../services/eventlistener.service";
-import {TokenStorageService} from "../../services/token-storage.service";
-import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {WorkoutProgramService} from "../../services/workout-program.service";
+import {Role} from "../../models/Role";
+import {BoughtWorkoutProgramService} from "../../services/bought-workout-program.service";
+import {WorkoutProgramAndDay} from "../../models/WorkoutProgramAndDay";
+import {Day} from "../../models/Day";
 
 @Component({
   selector: 'app-workout-program',
   templateUrl: './workout-program.component.html',
-  styleUrls: ['./workout-program.component.css']
+  styleUrls: ['./workout-program.component.css', '../../app.component.css']
 })
 export class WorkoutProgramComponent implements OnInit {
 
-  @Input() workoutProgram: WorkoutProgram | undefined
-  @Input() myProfile: User | undefined
+  @Input() workoutProgramAndDays: WorkoutProgramAndDay | undefined
   @Input() user: User | undefined
+  @Input() myProfile: User | undefined
 
-  constructor(private eventListenerService: EventListenerService,
-              private tokenService: TokenStorageService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private userService: UserService,
-              private workoutProgramService: WorkoutProgramService) {
-    this.eventListenerService.$success.subscribe((user) => this.user = user)
+  role: Role | undefined
+
+  constructor(private userService: UserService,
+              private boughtWorkoutProgramService: BoughtWorkoutProgramService) {
+  }
+
+  numSequence(n: Number) {
+    return Array.from(Array(n).keys()).map(t => t + 1)
+  }
+
+  //We dont have time for this
+  //The api should return Map<Int, List<Day>> ( week -> list of days )
+  daysOfWeek(n: Number): Day[] | undefined {
+    return this.workoutProgramAndDays?.days.filter(t => t.week == n)
   }
 
   ngOnInit(): void {
+    this.userService.getRole().subscribe(data => this.role = data.result)
   }
 
-  deleteWorkoutProgram(workoutProgramId: number | undefined) {
-    this.workoutProgramService.delete(workoutProgramId!)
-      .subscribe(t => window.location.reload())
+  onBuy() {
+    this.boughtWorkoutProgramService.buy(this.workoutProgramAndDays?.workoutProgram.id!!).subscribe()
   }
 
 }

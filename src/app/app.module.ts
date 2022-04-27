@@ -34,6 +34,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { BmiCalculatorComponent } from './components/bmi-calculator/bmi-calculator.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { BmiCalculatorComponent } from './components/bmi-calculator/bmi-calculat
         MatInputModule,
         MatButtonModule,
         MatTooltipModule,
+        MatExpansionModule,
     ],
   providers: [DatePipe,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

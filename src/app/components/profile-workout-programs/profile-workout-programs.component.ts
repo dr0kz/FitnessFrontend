@@ -7,6 +7,8 @@ import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {WorkoutProgram} from "../../models/WorkoutProgram";
 import {WorkoutProgramService} from "../../services/workout-program.service";
+import {Role} from "../../models/Role";
+import {WorkoutProgramAndDay} from "../../models/WorkoutProgramAndDay";
 
 @Component({
   selector: 'app-profile-workout-programs',
@@ -16,9 +18,9 @@ import {WorkoutProgramService} from "../../services/workout-program.service";
 export class ProfileWorkoutProgramsComponent implements OnInit {
 
   user: User | undefined
-  workoutPrograms: WorkoutProgram[] | undefined
+  workoutPrograms: WorkoutProgramAndDay[] | undefined
   myProfile: User | undefined
-  selectedWorkoutProgram: WorkoutProgram | undefined
+  selectedWorkoutProgramAndDays: WorkoutProgramAndDay | undefined
 
   constructor(private eventListenerService: EventListenerService,
               private tokenService: TokenStorageService,
@@ -34,18 +36,18 @@ export class ProfileWorkoutProgramsComponent implements OnInit {
       filter(params => params.has('id')),
       map(params => params.get('id')!),
       switchMap((id) => this.userService.findById(+id)),
-      switchMap((user) => this.workoutProgramService.findAllByTrainer(user.id).pipe(
-        map((workoutPrograms) => ({
-          workoutPrograms: workoutPrograms,
+      switchMap((user) => this.workoutProgramService.findAllByUserId(user.id).pipe(
+        map((data) => ({
+          workoutProgramsAndDays: data.result,
           user: user,
         }))
       ))
     ).subscribe((data) => {
       this.user = data.user
       this.eventListenerService.success(data.user)
-      this.workoutPrograms = data.workoutPrograms
-      if (data.workoutPrograms.length != 0) {
-        this.selectedWorkoutProgram = data.workoutPrograms[0]
+      this.workoutPrograms = data.workoutProgramsAndDays
+      if (data.workoutProgramsAndDays.length != 0) {
+        this.selectedWorkoutProgramAndDays = data.workoutProgramsAndDays[0]
       }
     })
   }

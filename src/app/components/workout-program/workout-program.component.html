@@ -1,18 +1,19 @@
 <div class="d-flex flex-column rounded-3 position-relative bg-white border rounded">
-  <div *ngIf="workoutProgram != undefined; else thenBlock">
+  <div>
     <!-- Name -->
     <div class="div-holders mt-2 ms-2">
-      <span class="holders">{{'Program Name: '+workoutProgram?.name}}</span>
+      <span class="holders">{{'Program Name: ' + workoutProgramAndDays?.workoutProgram?.name}}</span>
     </div>
 
     <!-- Trainer -->
     <div class="div-holders mt-3 ms-2">
-      <span class="holders">{{'Trainer: '+workoutProgram?.userTrainer?.name+' '+workoutProgram?.userTrainer?.surname}}</span>
+      <span
+        class="holders">{{'Trainer: ' + workoutProgramAndDays?.workoutProgram?.userTrainer?.name + ' ' + workoutProgramAndDays?.workoutProgram?.userTrainer?.surname}}</span>
     </div>
 
     <!-- Price -->
     <div class="div-holders mt-3 ms-2">
-      <span class="holders">{{'Price $'+workoutProgram?.price}}</span>
+      <span class="holders">{{'Price $' + workoutProgramAndDays?.workoutProgram?.price}}</span>
     </div>
 
     <!-- Description -->
@@ -20,31 +21,51 @@
       <span class="holders">Description</span>
       <div class="m-3">
         <span>
-          {{workoutProgram?.description}}
+          {{workoutProgramAndDays?.workoutProgram?.description}}
         </span>
       </div>
+    </div>
+    <div>
+
+      <div *ngFor="let week of numSequence(workoutProgramAndDays?.days?.length!!/7)">
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header class="panel-hover">
+            <mat-panel-title>
+              <h2>Week {{week}}</h2>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let day of daysOfWeek(week);let i=index;">
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header class="panel-hover">
+                <mat-panel-title>
+                  <h2>Day {{(week-1)*7+(i+1)}}</h2>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <h1>{{day.title}}</h1>
+              <h3>{{day.description}}</h3>
+              <iframe class="w-100"
+                      src="https://www.youtube.com/embed/K5KAc5CoCuk"
+                      allowfullscreen></iframe>
+            </mat-expansion-panel>
+            <hr>
+          </div>
+        </mat-expansion-panel>
+      </div>
+
     </div>
 
     <!-- kopcinja za edit i delete -->
     <div class="d-flex flex-row rounded-3 mt-3 ms-2 mb-2">
       <div class="d-flex ">
-        <a *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id"
-           routerLink="/workout-programs/{{workoutProgram?.id}}/edit" class="btn btn-secondary">Edit</a>
+        <a routerLink="/workout-programs/{{workoutProgramAndDays?.workoutProgram?.id}}/edit" *ngIf="role=='TRAINER'"
+           class="btn btn-secondary">Edit</a>
       </div>
-      <div class="d-flex ms-2">
-        <button *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id"
-                class="btn btn-danger" (click)="deleteWorkoutProgram(workoutProgram?.id)">Delete</button>
+      <div class="d-flex ms-2" *ngIf="user?.id==myProfile?.id && myProfile?.role=='TRAINER'">
+        <button class="btn btn-danger">Delete</button>
       </div>
-      <div class="d-flex ms-2">
-        <button class="btn btn-success">Buy</button>
+      <div class="d-flex ms-2" *ngIf="role=='TRAINEE' && myProfile?.id!=user?.id">
+        <button (click)="onBuy()" class="btn btn-success">Buy</button>
       </div>
-<!--      <button *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id" class="btn btn-primary m-2 w-25"-->
-<!--              routerLink="/workout-programs/create">-->
-<!--        Create New-->
-<!--      </button>-->
     </div>
   </div>
-  <ng-template #thenBlock>
-    <p class="p-4 mx-auto">You do not have any workout programs</p>
-  </ng-template>
 </div>

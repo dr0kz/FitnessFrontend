@@ -12,11 +12,14 @@
 .row {
   margin: 0;
 }
-
+.panel-hover:hover{
+  background-color: #d3d3d3 !important;
+}
 .col-md-2 {
   padding: 0;
 }
-
+.video{
+}
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }

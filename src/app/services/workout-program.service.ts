@@ -5,6 +5,7 @@ import {WorkoutProgram} from "../models/WorkoutProgram";
 import {User} from "../models/User";
 import {WorkoutProgramProjection} from "../models/projections/WorkoutProgramProjection";
 import {Response} from "../models/Response";
+import {WorkoutProgramAndDay} from "../models/WorkoutProgramAndDay";
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,14 @@ export class WorkoutProgramService {
 
   constructor(private http: HttpClient) { }
 
-  findAllByTrainer(trainerId: number): Observable<WorkoutProgram[]>{
-    return this.http.get<WorkoutProgram[]>(`/api/workout-program/list/${trainerId}`);
+  findAllByUserId(userId: number): Observable<Response<WorkoutProgramAndDay[]>>{
+    return this.http.get<Response<WorkoutProgramAndDay[]>>(`/api/workout-program/list/${userId}`);
   }
 
   // findAllBought():Observable<WorkoutProgramProjection[]>{
   //
   // }
+
 
   findById(workoutProgramId: number): Observable<Response<WorkoutProgram>> {
     return this.http.get<Response<WorkoutProgram>>(`/api/workout-program/${workoutProgramId}`);

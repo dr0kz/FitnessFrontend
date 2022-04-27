@@ -5,21 +5,18 @@
   </div>
   <div class="mt-2">
     <div class="d-flex flex-column rounded-3 position-relative bg-white border rounded">
-      <h2 *ngFor="let workoutProgram of workoutPrograms" (click)="selectedWorkoutProgram=workoutProgram"
-         class="d-flex flex-column m-2 cursor-pointer"
-         [ngClass]="selectedWorkoutProgram==workoutProgram ? 'selected-workout-program' : ''">{{workoutProgram.name}}</h2>
+      <h2 *ngFor="let workoutProgramAndDay of workoutPrograms" (click)="selectedWorkoutProgramAndDays=workoutProgramAndDay"
+          class="d-flex flex-column m-2 cursor-pointer"
+          [ngClass]="selectedWorkoutProgramAndDays==workoutProgramAndDay ? 'selected-workout-program' : ''"
+      >{{workoutProgramAndDay.workoutProgram.name}}</h2>
       <button *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id" class="btn btn-primary m-2 w-25"
               routerLink="/workout-programs/create">
         Create New
       </button>
     </div>
     <hr>
-    <div class="d-flex flex-column rounded-3 position-relative mt-2">
-      <app-workout-program
-        [workoutProgram]="selectedWorkoutProgram"
-        [myProfile]="myProfile"
-        [user]="user">
-      </app-workout-program>
+    <div class="d-flex flex-column rounded-3 position-relative mt-2" *ngIf="workoutPrograms?.length!=0">
+      <app-workout-program [user]="user" [myProfile]="myProfile" [workoutProgramAndDays]="selectedWorkoutProgramAndDays"></app-workout-program>
     </div>
   </div>
 </div>
