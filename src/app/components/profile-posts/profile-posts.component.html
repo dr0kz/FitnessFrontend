@@ -4,7 +4,7 @@
     <a class="ms-2 h4" routerLink="/profile/{{user?.id}}/workout-programs">Workout Programs</a>
   </div>
   <div *ngIf="posts?.length===0" class="bg-white mb-3 border">
-    <p class="text-center pt-2">You do not have any posts</p>
+    <p class="text-center pt-2">No posts yet</p>
   </div>
   <div *ngFor="let post of posts">
     <app-post [post]="post"

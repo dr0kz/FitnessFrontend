@@ -9,6 +9,7 @@ import {WorkoutProgram} from "../../models/WorkoutProgram";
 import {WorkoutProgramService} from "../../services/workout-program.service";
 import {Role} from "../../models/Role";
 import {WorkoutProgramAndDay} from "../../models/WorkoutProgramAndDay";
+import {BoughtWorkoutProgramService} from "../../services/bought-workout-program.service";
 
 @Component({
   selector: 'app-profile-workout-programs',
@@ -26,6 +27,7 @@ export class ProfileWorkoutProgramsComponent implements OnInit {
               private tokenService: TokenStorageService,
               private route: ActivatedRoute,
               private userService: UserService,
+              private boughtWorkoutProgramService: BoughtWorkoutProgramService,
               private workoutProgramService: WorkoutProgramService) {
     this.eventListenerService.$success.subscribe((user) => this.user = user)
   }
@@ -51,4 +53,17 @@ export class ProfileWorkoutProgramsComponent implements OnInit {
       }
     })
   }
+
+  onBuy(workoutProgramId: number) {
+    this.boughtWorkoutProgramService.buy(workoutProgramId).subscribe(
+      t => window.location.reload()
+    )
+  }
+
+  onDelete(workoutProgramId: number) {
+    this.workoutProgramService.delete(workoutProgramId).subscribe(
+      t => window.location.reload()
+    )
+  }
+
 }

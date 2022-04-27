@@ -4,19 +4,72 @@
     <a class="ms-2 h4" routerLink="/profile/{{user?.id}}/workout-programs">Workout Programs</a>
   </div>
   <div class="mt-2">
+
     <div class="d-flex flex-column rounded-3 position-relative bg-white border rounded">
-      <h2 *ngFor="let workoutProgramAndDay of workoutPrograms" (click)="selectedWorkoutProgramAndDays=workoutProgramAndDay"
-          class="d-flex flex-column m-2 cursor-pointer"
-          [ngClass]="selectedWorkoutProgramAndDays==workoutProgramAndDay ? 'selected-workout-program' : ''"
-      >{{workoutProgramAndDay.workoutProgram.name}}</h2>
+      <div *ngFor="let workoutProgramAndDay of workoutPrograms" class="d-flex justify-content-between">
+        <a (click)="selectedWorkoutProgramAndDays=workoutProgramAndDay"
+           class="m-2 pt-2 cursor-pointer naslovi"
+           [ngClass]="selectedWorkoutProgramAndDays==workoutProgramAndDay ? 'selected-workout-program' : ''">
+          {{workoutProgramAndDay.workoutProgram.name}}
+        </a>
+        <div class="mt-2 me-1 mb-2">
+          <span class="">
+            <a routerLink="/workout-programs/{{workoutProgramAndDay.workoutProgram.id}}/edit"
+               *ngIf="user?.id==myProfile?.id && user?.role=='TRAINER'"
+               class="btn me-2 btn-secondary text-white">Edit</a>
+          </span>
+          <span class="mx-1" *ngIf="user?.id==myProfile?.id && myProfile?.role=='TRAINER'">
+            <button (click)="onDelete(workoutProgramAndDay.workoutProgram.id)" class="btn btn-danger">Delete</button>
+          </span>
+          <span class="mx-2" *ngIf="user?.id!=myProfile?.id && myProfile?.role==='TRAINEE'">
+            <button (click)="onBuy(workoutProgramAndDay.workoutProgram.id)" class="btn btn-success">Buy</button>
+          </span>
+        </div>
+
+
+      </div>
       <button *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id" class="btn btn-primary m-2 w-25"
               routerLink="/workout-programs/create">
         Create New
       </button>
     </div>
+
+
+    <!--    <div class="d-flex flex-column rounded-3 position-relative bg-white border rounded">-->
+    <!--      <h2 *ngFor="let workoutProgramAndDay of workoutPrograms" (click)="selectedWorkoutProgramAndDays=workoutProgramAndDay"-->
+    <!--          class="d-flex flex-column m-2 cursor-pointer"-->
+    <!--          [ngClass]="selectedWorkoutProgramAndDays==workoutProgramAndDay ? 'selected-workout-program' : ''"-->
+    <!--      >{{workoutProgramAndDay.workoutProgram.name}}</h2>-->
+    <!--      <button *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id" class="btn btn-primary m-2 w-25"-->
+    <!--              routerLink="/workout-programs/create">-->
+    <!--        Create New-->
+    <!--      </button>-->
+    <!--    </div>-->
+
+    <!--    &lt;!&ndash; kopcinja za edit delete i buy &ndash;&gt;-->
+    <!--    <div class="d-flex flex-row rounded-3 mt-3 ms-2 mb-2">-->
+    <!--      <div class="d-flex ">-->
+    <!--        <a routerLink="/workout-programs/{{workoutProgramAndDays?.workoutProgram?.id}}/edit" *ngIf="role=='TRAINER'"-->
+    <!--           class="btn btn-secondary">Edit</a>-->
+    <!--      </div>-->
+    <!--      <div class="d-flex ms-2" *ngIf="user?.id==myProfile?.id && myProfile?.role=='TRAINER'">-->
+    <!--        <button class="btn btn-danger">Delete</button>-->
+    <!--      </div>-->
+    <!--      <div class="d-flex ms-2" *ngIf="role=='TRAINEE' && myProfile?.id!=user?.id">-->
+    <!--        <button (click)="onBuy()" class="btn btn-success">Buy</button>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
     <hr>
+
     <div class="d-flex flex-column rounded-3 position-relative mt-2" *ngIf="workoutPrograms?.length!=0">
-      <app-workout-program [user]="user" [myProfile]="myProfile" [workoutProgramAndDays]="selectedWorkoutProgramAndDays"></app-workout-program>
+      <app-workout-program [user]="user" [myProfile]="myProfile"
+                           [workoutProgramAndDays]="selectedWorkoutProgramAndDays"></app-workout-program>
+    </div>
+    <div *ngIf="workoutPrograms?.length==0">
+      <div class="d-flex flex-column position-relative mt-2 bg-white border rounded">
+        <p class="text-center pt-2">No workout programs yet</p>
+      </div>
     </div>
   </div>
 </div>

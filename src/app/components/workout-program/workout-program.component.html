@@ -20,13 +20,13 @@
     <div class="div-holders mt-3 ms-2">
       <span class="holders">Description</span>
       <div class="m-3">
-        <span>
+        <span id="desc">
           {{workoutProgramAndDays?.workoutProgram?.description}}
         </span>
       </div>
     </div>
-    <div>
 
+    <div>
       <div *ngFor="let week of numSequence(workoutProgramAndDays?.days?.length!!/7)">
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header class="panel-hover">
@@ -51,21 +51,21 @@
           </div>
         </mat-expansion-panel>
       </div>
-
     </div>
 
-    <!-- kopcinja za edit i delete -->
-    <div class="d-flex flex-row rounded-3 mt-3 ms-2 mb-2">
-      <div class="d-flex ">
-        <a routerLink="/workout-programs/{{workoutProgramAndDays?.workoutProgram?.id}}/edit" *ngIf="role=='TRAINER'"
-           class="btn btn-secondary">Edit</a>
-      </div>
-      <div class="d-flex ms-2" *ngIf="user?.id==myProfile?.id && myProfile?.role=='TRAINER'">
-        <button class="btn btn-danger">Delete</button>
-      </div>
-      <div class="d-flex ms-2" *ngIf="role=='TRAINEE' && myProfile?.id!=user?.id">
-        <button (click)="onBuy()" class="btn btn-success">Buy</button>
-      </div>
-    </div>
+    <!-- kopcinja za edit delete i buy -->
+<!--    <div class="d-flex flex-row rounded-3 mt-3 ms-2 mb-2">-->
+<!--      <div class="d-flex ">-->
+<!--        <a routerLink="/workout-programs/{{workoutProgramAndDays?.workoutProgram?.id}}/edit" *ngIf="role=='TRAINER'"-->
+<!--           class="btn btn-secondary">Edit</a>-->
+<!--      </div>-->
+<!--      <div class="d-flex ms-2" *ngIf="user?.id==myProfile?.id && myProfile?.role=='TRAINER'">-->
+<!--        <button class="btn btn-danger">Delete</button>-->
+<!--      </div>-->
+<!--      <div class="d-flex ms-2" *ngIf="role=='TRAINEE' && myProfile?.id!=user?.id">-->
+<!--        <button (click)="onBuy()" class="btn btn-success">Buy</button>-->
+<!--      </div>-->
+<!--    </div>-->
+
   </div>
 </div>
