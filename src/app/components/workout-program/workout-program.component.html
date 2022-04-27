@@ -26,33 +26,34 @@
       </div>
     </div>
     <div>
-
-      <div *ngFor="let week of numSequence(workoutProgramAndDays?.days?.length!!/7)">
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header class="panel-hover">
-            <mat-panel-title>
-              <h2>Week {{week}}</h2>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div *ngFor="let day of daysOfWeek(week);let i=index;">
-            <mat-expansion-panel hideToggle>
-              <mat-expansion-panel-header class="panel-hover">
-                <mat-panel-title>
-                  <h2>Day {{(week-1)*7+(i+1)}}</h2>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <h1>{{day.title}}</h1>
-              <h3>{{day.description}}</h3>
-              <iframe class="w-100"
-                      src="https://www.youtube.com/embed/K5KAc5CoCuk"
-                      allowfullscreen></iframe>
-            </mat-expansion-panel>
-            <hr>
-          </div>
-        </mat-expansion-panel>
+      <div *ngIf="user?.id==myProfile?.id">
+        <div *ngFor="let week of numSequence(workoutProgramAndDays?.days?.length!!/7)">
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header class="panel-hover">
+              <mat-panel-title>
+                <h2>Week {{week}}</h2>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let day of daysOfWeek(week);let i=index;">
+              <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header class="panel-hover">
+                  <mat-panel-title>
+                    <h2>Day {{(week - 1) * 7 + (i + 1)}}</h2>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <h1>{{day.title}}</h1>
+                <h3>{{day.description}}</h3>
+                <iframe class="w-100"
+                        [src]="transform(day.video)"
+                        allowfullscreen></iframe>
+              </mat-expansion-panel>
+              <hr>
+            </div>
+          </mat-expansion-panel>
+        </div>
       </div>
-
     </div>
+
 
     <!-- kopcinja za edit i delete -->
     <div class="d-flex flex-row rounded-3 mt-3 ms-2 mb-2">

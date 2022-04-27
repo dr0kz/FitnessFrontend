@@ -6,6 +6,7 @@ import {Role} from "../../models/Role";
 import {BoughtWorkoutProgramService} from "../../services/bought-workout-program.service";
 import {WorkoutProgramAndDay} from "../../models/WorkoutProgramAndDay";
 import {Day} from "../../models/Day";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-workout-program',
@@ -21,7 +22,8 @@ export class WorkoutProgramComponent implements OnInit {
   role: Role | undefined
 
   constructor(private userService: UserService,
-              private boughtWorkoutProgramService: BoughtWorkoutProgramService) {
+              private boughtWorkoutProgramService: BoughtWorkoutProgramService,
+              private domSanitizer: DomSanitizer,) {
   }
 
   numSequence(n: Number) {
@@ -32,6 +34,10 @@ export class WorkoutProgramComponent implements OnInit {
   //The api should return Map<Int, List<Day>> ( week -> list of days )
   daysOfWeek(n: Number): Day[] | undefined {
     return this.workoutProgramAndDays?.days.filter(t => t.week == n)
+  }
+
+  transform(videoUrl: string){
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }
 
   ngOnInit(): void {
