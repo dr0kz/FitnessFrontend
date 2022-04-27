@@ -6,6 +6,7 @@ import {map, tap} from "rxjs";
 import {DatePipe} from "@angular/common";
 import {EventListenerService} from "../../services/eventlistener.service";
 import {TokenStorageService} from "../../services/token-storage.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-news-feed',
@@ -24,7 +25,8 @@ export class NewsFeedComponent implements OnInit {
               private sanitizer: DomSanitizer,
               private datePipe: DatePipe,
               private eventListenerService: EventListenerService,
-              private tokenService: TokenStorageService) {
+              private tokenService: TokenStorageService,
+              private userService: UserService,) {
   }
 
   fetchPosts(page: number, pageSize: number): void {
@@ -33,7 +35,7 @@ export class NewsFeedComponent implements OnInit {
       this.firstGetRequestDateTime = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
     }
 
-    this.eventListenerService.success(this.tokenService.getUser()!!)
+    this.userService.getUser().subscribe(data => this.eventListenerService.success(data))
 
     this.postService.getPostsPaginate(page, pageSize, this.firstGetRequestDateTime!!)
       .subscribe({

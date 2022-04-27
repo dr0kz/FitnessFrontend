@@ -28,6 +28,11 @@ export class UserService {
     return this.http.put<Response<any>>('/api/users/edit-profile', formData);
   }
 
+  getUser(): Observable<User> {
+    return this.http.get<Response<User>>(`/api/users/get`)
+      .pipe(map(t => this.userMapper.transformUser(t.result)))
+  }
+
   followUnfollowUser(followerId: number) {
     return this.http.put(`/api/users/follow?userFollowerId=${followerId}`, {});
   }
@@ -38,7 +43,7 @@ export class UserService {
     )
   }
 
-  getRole(): Observable<Response<Role>>{
+  getRole(): Observable<Response<Role>> {
     return this.http.get<Response<Role>>('/api/users/role')
   }
 

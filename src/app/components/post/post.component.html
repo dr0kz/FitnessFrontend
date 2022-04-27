@@ -6,7 +6,8 @@
       </div>
       <a routerLink="/profile/{{post?.user?.id}}/posts"><span class="ms-2">{{post?.user?.name + ' ' + post?.user?.surname}}</span></a>
     </div>
-    <div *ngIf="post!.user!.role =='TRAINER'">
+    <h1>{{post!.user!.role}}</h1>
+    <div *ngIf="post!.user!.role=='TRAINER'">
       <span *ngFor="let star of starsByUser()">
         <span>&#11088;</span>
       </span>

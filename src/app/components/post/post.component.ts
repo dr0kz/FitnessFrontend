@@ -47,13 +47,12 @@ export class PostComponent{
 
   starsByUser() {
     let n
-    if (this.post!.user!.followersNum >= 100000) n = 5
-    else if (this.post!.user!.followersNum >= 10000 && this.post!.user!.followersNum < 100000) n = 4
-    else if (this.post!.user!.followersNum >= 1000 && this.post!.user!.followersNum < 10000) n = 3
-    else if (this.post!.user!.followersNum >= 100 && this.post!.user!.followersNum < 1000) n = 2
-    else if (this.post!.user!.followersNum >= 10 && this.post!.user!.followersNum < 100) n = 1
+    if (this.user!.followersNum >= 5) n = 5
+    else if (this.user!.followersNum >= 4 && this.user!.followersNum < 5) n = 4
+    else if (this.user!.followersNum >= 3 && this.user!.followersNum < 4) n = 3
+    else if (this.user!.followersNum >= 2 && this.user!.followersNum < 3) n = 2
+    else if (this.user!.followersNum >= 1 && this.user!.followersNum < 2) n = 1
     else n = 0
-    console.log("dasdasdasd")
     return Array.from(Array(n).keys()).map(t => t + 1)
   }
 
