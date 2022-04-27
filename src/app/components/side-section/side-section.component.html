@@ -1,9 +1,11 @@
 <div class="d-flex flex-column align-items-center bg-white border rounded h-100">
   <img class="rounded-circle" width="160" height="160" src="{{user!=undefined && user.image!=null ? user.image : '/assets/images/profile-icon.png'}}">
-  <div class="mt-2">
-    &#11088;&#11088;&#11088;
+  <div *ngIf="user?.role =='TRAINER'" class="mt-2">
+    <span *ngFor="let star of starsByUser()">
+      <span>&#11088;</span>
+    </span>
   </div>
-  <h3 *ngIf="user!=undefined" class="mb-0">{{user.name+' '+user.surname}}</h3>
+  <h3 *ngIf="user!=undefined" class="mb-1 mt-2">{{user.name+' '+user.surname}}</h3>
   <div class="d-flex justify-content-between justify-content-around w-100">
     <div class="d-flex flex-column align-items-center">
       <span><strong>Following</strong></span>

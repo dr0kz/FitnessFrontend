@@ -36,5 +36,4 @@ export class UserService {
       map(user => this.userMapper.transformUser(user)),
     )
   }
-
 }

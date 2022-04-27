@@ -3,11 +3,14 @@
     <a class="me-2 h4" routerLink="/profile/{{user?.id}}/posts">Posts</a>
     <a class="ms-2 h4" routerLink="/profile/{{user?.id}}/workout-programs">Workout Programs</a>
   </div>
-  <div *ngIf="posts?.length===0">
-    <p class="text-center">You do not have any posts</p>
+  <div *ngIf="posts?.length===0" class="bg-white mb-3 border">
+    <p class="text-center pt-2">You do not have any posts</p>
   </div>
   <div *ngFor="let post of posts">
-    <app-post [post]="post"></app-post>
+    <app-post [post]="post"
+              [myProfile]="myProfile"
+              [user]="user">
+    </app-post>
   </div>
 </div>
 

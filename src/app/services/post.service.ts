@@ -34,7 +34,7 @@ export class PostService {
   }
 
   deletePost(postId: number) {
-    return this.http.delete(`/api/posts/${postId}`);
+    return this.http.delete(`/api/posts/delete/${postId}`);
   }
 
   likeOrDislikePost(postId: number) {

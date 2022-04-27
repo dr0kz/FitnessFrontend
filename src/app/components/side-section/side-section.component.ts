@@ -44,11 +44,21 @@ export class SideSectionComponent implements OnInit {
       }
     )
 
-
   }
 
   isDifferentUser() {
     return this.user?.id != this.tokenService.getUser()?.id
+  }
+
+  starsByUser() {
+    let n
+    if (this.user!.followersNum >= 100000) n = 5
+    else if (this.user!.followersNum >= 10000 && this.user!.followersNum < 100000) n = 4
+    else if (this.user!.followersNum >= 1000 && this.user!.followersNum < 10000) n = 3
+    else if (this.user!.followersNum >= 100 && this.user!.followersNum < 1000) n = 2
+    else if (this.user!.followersNum >= 10 && this.user!.followersNum < 100) n = 1
+    else n = 0
+    return Array.from(Array(n).keys()).map(t => t + 1)
   }
 
 }

@@ -47,7 +47,7 @@ export class CreatePostComponent implements OnInit{
     this.postService.createPost(formData)
       .subscribe({
         next: post => {
-          this.router.navigate(['/'])
+          window.location.reload()
         },
         error: () => {
           console.log('error')

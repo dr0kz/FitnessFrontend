@@ -1,5 +1,5 @@
 <div class="d-flex flex-column rounded-3 position-relative bg-white border rounded">
-  <div>
+  <div *ngIf="workoutProgram != undefined; else thenBlock">
     <!-- Name -->
     <div class="div-holders mt-2 ms-2">
       <span class="holders">{{'Program Name: '+workoutProgram?.name}}</span>
@@ -28,14 +28,23 @@
     <!-- kopcinja za edit i delete -->
     <div class="d-flex flex-row rounded-3 mt-3 ms-2 mb-2">
       <div class="d-flex ">
-        <a routerLink="/workout-programs/{{workoutProgram?.id}}/edit" class="btn btn-secondary">Edit</a>
+        <a *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id"
+           routerLink="/workout-programs/{{workoutProgram?.id}}/edit" class="btn btn-secondary">Edit</a>
       </div>
       <div class="d-flex ms-2">
-        <button class="btn btn-danger">Delete</button>
+        <button *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id"
+                class="btn btn-danger" (click)="deleteWorkoutProgram(workoutProgram?.id)">Delete</button>
       </div>
       <div class="d-flex ms-2">
         <button class="btn btn-success">Buy</button>
       </div>
+<!--      <button *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id" class="btn btn-primary m-2 w-25"-->
+<!--              routerLink="/workout-programs/create">-->
+<!--        Create New-->
+<!--      </button>-->
     </div>
   </div>
+  <ng-template #thenBlock>
+    <p class="p-4 mx-auto">You do not have any workout programs</p>
+  </ng-template>
 </div>

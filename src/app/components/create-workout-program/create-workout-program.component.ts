@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {WorkoutProgramService} from "../../services/workout-program.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {TokenStorageService} from "../../services/token-storage.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-create-workout-program',
@@ -11,12 +14,17 @@ export class CreateWorkoutProgramComponent implements OnInit {
 
   numberOfWeeks: number = 0
   workoutProgramForm!: FormGroup
+  myProfile: User | undefined
 
   constructor(private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router,
+              private tokenService: TokenStorageService,
               private workoutProgramService: WorkoutProgramService) {
   }
 
   ngOnInit(): void {
+    this.myProfile = this.tokenService.getUser()
     this.workoutProgramForm = this.formBuilder.group({
         name: '',
         price: 0,
@@ -59,6 +67,6 @@ export class CreateWorkoutProgramComponent implements OnInit {
     let days = this.workoutProgramForm.controls['days'].value;
 
     this.workoutProgramService.create(name, price, description, days)
-      .subscribe(t => console.log(t))
+      .subscribe(t => this.router.navigate([`profile/${this.myProfile?.id}/workout-programs`]))
   }
 }
