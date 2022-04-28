@@ -5,7 +5,7 @@ import {map, Observable, tap} from "rxjs";
 import {Response} from "../models/Response";
 import {User} from "../models/User";
 import {UserProjection} from "../models/projections/UserProjection";
-import {UserMapper} from "./UserMapper/UserMapper";
+import {UserMapper} from "./userMapper/UserMapper";
 import {Role} from "../models/Role";
 
 @Injectable({

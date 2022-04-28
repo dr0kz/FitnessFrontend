@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from "../../services/token-storage.service";
 import {FormControl} from "@angular/forms";
-import {catchError, debounce, distinctUntilChanged, filter, interval, map, of, switchMap, tap} from "rxjs";
+import {debounce, distinctUntilChanged, filter, interval, map, switchMap} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {UserProjection} from "../../models/projections/UserProjection";

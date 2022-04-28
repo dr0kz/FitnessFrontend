@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from "../../models/Post";
 import {PostService} from "../../services/post.service";
-import {catchError, filter, map, of, switchMap, tap} from "rxjs";
+import {filter, map, switchMap} from "rxjs";
 import {DomSanitizer} from "@angular/platform-browser";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {EventListenerService} from "../../services/eventlistener.service";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";

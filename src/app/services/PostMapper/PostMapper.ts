@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Subject} from "rxjs";
 import {Post} from "../../models/Post";
 
 @Injectable({
@@ -23,14 +22,12 @@ export class PostMapper {
     return Math.floor(differenceInSeconds) == 1 ? Math.floor(differenceInSeconds) + ' second' : Math.floor(differenceInSeconds) + ' seconds'
   }
 
-
   transformPosts(posts: Post[]): Post[] {
     return posts.map(post => this.transformPost(post))
   }
 
   transformPost(post: Post): Post {
     let postImage = 'data:image/png;base64,' + post.image;
-
     let userImage = post.user.image == null ? null : 'data:image/png;base64,' + post.user.image;
 
     return {

@@ -28,9 +28,6 @@
 #post-button:hover{
   background-color: #009da5;
 }
-
-
-
 input[type="file"] {
   display: none;
 }

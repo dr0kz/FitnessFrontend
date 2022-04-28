@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {WorkoutProgramService} from "../../services/workout-program.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TokenStorageService} from "../../services/token-storage.service";
@@ -55,7 +55,6 @@ export class CreateWorkoutProgramComponent implements OnInit {
   numSequence(n: Number) {
     return Array.from(Array(n).keys()).map(t => t + 1)
   }
-
 
   onSubmit(): void {
     if (this.workoutProgramForm.invalid) {

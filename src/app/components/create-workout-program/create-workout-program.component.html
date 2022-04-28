@@ -2,9 +2,7 @@
   <div class="d-flex flex-column col-12">
     <div class="bg-white p-5">
       <h1 class="text-center ">Create Workout Program</h1>
-
       <form [formGroup]="workoutProgramForm" (ngSubmit)="onSubmit()" class="mt-5">
-
         <div class="div-holders mt-2 ">
           <span class="holders">Name</span>
           <input formControlName="name" class="form form-control" type="text" placeholder="Name"/>
@@ -24,7 +22,6 @@
           <input (keyup)="numberOfWeeksChange($event)" class="form form-control" onwheel="this.blur()" type="number" min="0"
                  placeholder="Number Of Weeks"/>
         </div>
-
         <div class="d-flex flex-column mt-3" *ngIf="numberOfWeeks != 0">
           <div *ngFor="let week of numSequence(numberOfWeeks);let i=index">
             <mat-expansion-panel hideToggle>

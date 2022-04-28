@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {TokenStorageService} from "./services/token-storage.service";
 
 @Component({
   selector: 'app-root',
@@ -7,13 +6,13 @@ import {TokenStorageService} from "./services/token-storage.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'fitness';
+  title = 'Fitness Stovix';
 
-  constructor(private tokenStorageService: TokenStorageService) {
+  constructor() {
   }
+
   ngOnInit(): void {
 
   }
-
 
 }

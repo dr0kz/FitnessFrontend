@@ -4,7 +4,7 @@ import {map, Observable} from "rxjs";
 import {Post} from "../models/Post";
 import {Response} from "../models/Response";
 import {DomSanitizer} from "@angular/platform-browser";
-import {PostMapper} from "./PostMapper/PostMapper";
+import {PostMapper} from "./postMapper/PostMapper";
 
 @Injectable({
   providedIn: 'root'

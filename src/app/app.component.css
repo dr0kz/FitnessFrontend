@@ -3,12 +3,10 @@
   margin: auto;
   padding: 0;
 }
-
 .post-image {
   max-width: 600px;
   max-height: 900px;
 }
-
 .row {
   margin: 0;
 }
@@ -23,11 +21,9 @@
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
-
 .divider {
   border-top: 3px solid #000000;
 }
-
 a {
   color: black;
 }
@@ -37,57 +33,45 @@ a {
 a:hover {
   color: rgba(51, 51, 51, 0.48);
 }
-
 @media only screen and (max-width: 600px) {
   .main-container {
     width: 100%;
   }
 }
-
 @media only screen and (max-width: 991px) {
   .main-container {
     max-width: 600px;
   }
-
   .side-section {
     display: none;
   }
-
   .main-section {
     padding-right: 0 !important;
   }
-
   .dropdown-item-mobile {
     display: flex !important;
   }
 }
-
 .dropdown-item-info {
   display: none;
 }
-
 .save-button {
   min-width: 130px !important;
   max-width: 150px !important;
 }
-
 .add-button {
   min-width: 130px !important;
   max-width: 150px !important;
 }
-
 .login-image {
   margin-right: 10px;
 }
-
 .login-section {
   margin-left: 10px;
 }
-
 .login {
   margin-top: 3em;
 }
-
 .profile-image {
   width: 30px;
   height: 30px;

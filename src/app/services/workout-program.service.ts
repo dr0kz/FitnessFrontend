@@ -19,11 +19,6 @@ export class WorkoutProgramService {
     return this.http.get<Response<WorkoutProgramAndDay[]>>(`/api/workout-program/list/${userId}`)
   }
 
-  // findAllBought():Observable<WorkoutProgramProjection[]>{
-  //
-  // }
-
-
   findById(workoutProgramId: number): Observable<Response<WorkoutProgram>> {
     return this.http.get<Response<WorkoutProgram>>(`/api/workout-program/${workoutProgramId}`);
   }
@@ -44,7 +39,5 @@ export class WorkoutProgramService {
       days: days
     });
   }
-
-  //create()
 
 }

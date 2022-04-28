@@ -4,7 +4,6 @@ import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";
 import {TokenStorageService} from "../../services/token-storage.service";
-import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-edit-profile',
@@ -23,9 +22,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.user = this.tokenService.getUser()
-
     this.editProfile = this.formBuilder.group({
       name: null,
       surname: null,

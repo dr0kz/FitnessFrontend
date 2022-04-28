@@ -4,7 +4,6 @@
     <a class="ms-2 h4" routerLink="/profile/{{user?.id}}/workout-programs">Workout Programs</a>
   </div>
   <div class="mt-2">
-
     <div class="d-flex flex-column rounded-3 position-relative bg-white border rounded">
       <div *ngFor="let workoutProgramAndDay of workoutPrograms" class="d-flex justify-content-between">
         <a (click)="selectedWorkoutProgramAndDays=workoutProgramAndDay"
@@ -25,17 +24,13 @@
             <button (click)="onBuy(workoutProgramAndDay.workoutProgram.id)" class="btn btn-success">Buy</button>
           </span>
         </div>
-
-
       </div>
       <button *ngIf="user?.role=='TRAINER' && user?.id==myProfile?.id" class="btn btn-primary m-2 w-25"
               routerLink="/workout-programs/create">
         Create New
       </button>
     </div>
-
     <hr>
-
     <div class="d-flex flex-column rounded-3 position-relative mt-2" *ngIf="workoutPrograms?.length!=0">
       <app-workout-program [user]="user" [myProfile]="myProfile"
                            [workoutProgramAndDays]="selectedWorkoutProgramAndDays"></app-workout-program>

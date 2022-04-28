@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -19,9 +18,7 @@ import {CreateWorkoutProgramComponent} from './components/create-workout-program
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProfilePostsComponent} from './components/profile-posts/profile-posts.component';
 import {CreatePostComponent} from "./components/create-post/create-post.component";
-import {
-  ProfileWorkoutProgramsComponent
-} from './components/profile-workout-programs/profile-workout-programs.component';
+import {ProfileWorkoutProgramsComponent} from './components/profile-workout-programs/profile-workout-programs.component';
 import {WorkoutProgramComponent} from './components/workout-program/workout-program.component';
 import {EditWorkoutProgramComponent} from './components/edit-workout-program/edit-workout-program.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -33,7 +30,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { BmiCalculatorComponent } from './components/bmi-calculator/bmi-calculator.component';
+import {BmiCalculatorComponent} from './components/bmi-calculator/bmi-calculator.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({

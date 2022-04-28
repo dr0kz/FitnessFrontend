@@ -43,7 +43,6 @@ export class SideSectionComponent implements OnInit {
         }
       }
     )
-
   }
 
   isDifferentUser() {

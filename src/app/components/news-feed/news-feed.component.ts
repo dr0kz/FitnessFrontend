@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Post} from "../../models/Post";
 import {PostService} from "../../services/post.service";
 import {DomSanitizer} from "@angular/platform-browser";
-import {map, tap} from "rxjs";
 import {DatePipe} from "@angular/common";
 import {EventListenerService} from "../../services/eventlistener.service";
 import {TokenStorageService} from "../../services/token-storage.service";
@@ -59,6 +58,5 @@ export class NewsFeedComponent implements OnInit {
   onScrollDown() {
     this.fetchPosts(++this.currentPage, this.pageSize);
   }
-
 
 }

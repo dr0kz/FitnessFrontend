@@ -2,9 +2,7 @@
   <div class="d-flex flex-column col-12">
     <div class="bg-white p-5">
       <h1 class="text-center ">Create Workout Program</h1>
-
       <form [formGroup]="workoutProgramForm" (ngSubmit)="onSubmit()" class="mt-5">
-
         <div class="div-holders mt-2 ">
           <span class="holders">Name</span>
           <input [value]="workoutProgram?.name" formControlName="name" class="form form-control" type="text" placeholder="Name"/>

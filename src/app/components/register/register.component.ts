@@ -3,7 +3,6 @@ import {AuthService} from "../../services/auth.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {TokenStorageService} from "../../services/token-storage.service";
 import {Router} from "@angular/router";
-import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-register',

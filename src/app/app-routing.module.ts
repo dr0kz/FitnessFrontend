@@ -7,9 +7,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {EditProfileComponent} from "./components/edit-profile/edit-profile.component";
 import {CreateWorkoutProgramComponent} from "./components/create-workout-program/create-workout-program.component";
 import {ProfilePostsComponent} from "./components/profile-posts/profile-posts.component";
-import {
-  ProfileWorkoutProgramsComponent
-} from "./components/profile-workout-programs/profile-workout-programs.component";
+import {ProfileWorkoutProgramsComponent} from "./components/profile-workout-programs/profile-workout-programs.component";
 import {EditWorkoutProgramComponent} from "./components/edit-workout-program/edit-workout-program.component";
 import {AuthGuard} from "./helpers/authguard";
 import {BmiCalculatorComponent} from "./components/bmi-calculator/bmi-calculator.component";

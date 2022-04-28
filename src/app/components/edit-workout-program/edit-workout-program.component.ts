@@ -60,7 +60,6 @@ export class EditWorkoutProgramComponent implements OnInit {
     return Array.from(Array(n).keys()).map(t => t + 1)
   }
 
-
   onSubmit(): void {
     if (this.workoutProgramForm.invalid) {
       return;

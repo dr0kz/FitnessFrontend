@@ -1,5 +1,3 @@
-import {User} from "./User";
-
 export interface WorkoutProgram {
   id: number,
   name: string,

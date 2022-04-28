@@ -20,6 +20,7 @@ export class CreatePostComponent implements OnInit{
               private formBuilder: FormBuilder,
               private tokenService: TokenStorageService) {
   }
+
   ngOnInit(): void {
 
     this.user = this.tokenService.getUser()
@@ -29,6 +30,7 @@ export class CreatePostComponent implements OnInit{
       image: '',
     });
   }
+
   onFileChange(event: Event){
     const element = event.currentTarget as HTMLInputElement;
     let fileList: FileList | null = element.files;
@@ -37,6 +39,7 @@ export class CreatePostComponent implements OnInit{
       this.createPostForm.get('image')!!.setValue(file);
     }
   }
+
   onSubmit(): void {
     if (this.createPostForm.invalid) {
       return;
@@ -54,4 +57,5 @@ export class CreatePostComponent implements OnInit{
         }
       })
   }
+
 }

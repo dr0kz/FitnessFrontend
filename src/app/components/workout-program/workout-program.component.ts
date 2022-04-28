@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {WorkoutProgram} from "../../models/WorkoutProgram";
 import {User} from "../../models/User";
 import {UserService} from "../../services/user.service";
 import {Role} from "../../models/Role";
@@ -30,8 +29,6 @@ export class WorkoutProgramComponent implements OnInit {
     return Array.from(Array(n).keys()).map(t => t + 1)
   }
 
-  //We dont have time for this
-  //The api should return Map<Int, List<Day>> ( week -> list of days )
   daysOfWeek(n: Number): Day[] | undefined {
     return this.workoutProgramAndDays?.days.filter(t => t.week == n)
   }

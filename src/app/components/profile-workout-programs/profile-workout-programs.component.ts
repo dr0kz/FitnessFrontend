@@ -5,9 +5,7 @@ import {TokenStorageService} from "../../services/token-storage.service";
 import {filter, map, switchMap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {WorkoutProgram} from "../../models/WorkoutProgram";
 import {WorkoutProgramService} from "../../services/workout-program.service";
-import {Role} from "../../models/Role";
 import {WorkoutProgramAndDay} from "../../models/WorkoutProgramAndDay";
 import {BoughtWorkoutProgramService} from "../../services/bought-workout-program.service";
 

@@ -1,13 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Post} from "../../models/Post";
 import {PostService} from "../../services/post.service";
 import {User} from "../../models/User";
-import {EventListenerService} from "../../services/eventlistener.service";
-import {TokenStorageService} from "../../services/token-storage.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../services/user.service";
-import {WorkoutProgramService} from "../../services/workout-program.service";
-import {switchMap} from "rxjs";
 
 @Component({
   selector: 'app-post',
@@ -20,13 +14,7 @@ export class PostComponent{
   @Input() user: User | undefined
   @Input() myProfile: User | undefined
 
-  constructor(private postService: PostService,
-    private eventListenerService: EventListenerService,
-    private tokenService: TokenStorageService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private userService: UserService,
-    private workoutProgramService: WorkoutProgramService) {
+  constructor(private postService: PostService) {
   }
 
   likeOrDislikePost(postId: number) {
