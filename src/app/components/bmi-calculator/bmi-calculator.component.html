@@ -25,7 +25,7 @@
             </div>
           </form>
           <br>
-          <div *ngIf="bmiIndex && bmiMeaning">
+          <div *ngIf="bmiIndex && bmiMeaning && flag==false">
             <h3>Calculated BMI results</h3>
             <div class="bmi-cont">
               <p>Your BMI index is:  <span class="bmiIndex">{{bmiIndex}}</span></p>

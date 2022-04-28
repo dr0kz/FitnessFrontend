@@ -23,6 +23,7 @@ export class BmiCalculatorComponent implements OnInit {
   }
 
   onSubmit() {
+    this.flag = false
     if (this.calculateBmiForm.invalid) {
       return;
     } else {
